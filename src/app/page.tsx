@@ -16,7 +16,7 @@ const promos = [
     eyebrow: 'Car Sales',
     title: 'Find Your Perfect Car',
     description: 'Browse our wide range of quality cars, all vehicles are inspected and ready for your next ride.',
-    points: ['Certified inspection', 'Best market prices', 'Flexible financing', 'Fast delivery'],
+    points: ['Certified inspection', 'Best market prices', 'Fast delivery'],
     cta: 'View All Cars',
     href: '/car-sales',
     image: '/img1.jpg',
@@ -70,7 +70,7 @@ export default function HomePage() {
         </div>
 
         <div className="hero-visual panel">
-          <Image src="/hero-img.png" alt="Featured sports car" width={960} height={640} className="hero-image" priority />
+          <Image src="/hero-img.jpg" alt="Featured sports car" width={960} height={640} className="hero-image" priority />
         </div>
       </section>
 

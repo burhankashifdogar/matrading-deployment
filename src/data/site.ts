@@ -36,7 +36,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Lahore' },
       { label: 'Condition', value: 'Excellent' }
     ],
-    images: ['/img1.jpg', '/car-2.svg', '/car-3.svg']
+    images: ['/img1.jpg', '/car1.jpg', '/car2.jpg']
   },
   {
     slug: 'honda-civic-2020',
@@ -54,7 +54,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Islamabad' },
       { label: 'Condition', value: 'Premium' }
     ],
-    images: ['/img2.jpg', '/car-3.svg', '/car-1.svg']
+    images: ['/car1.jpg', '/car2.jpg', '/car3.jpg']
   },
   {
     slug: 'hyundai-elantra-2022',
@@ -72,7 +72,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Karachi' },
       { label: 'Condition', value: 'Like New' }
     ],
-    images: ['/hero-img.png', '/img1.jpg', '/car-2.svg']
+    images: ['/car2.jpg', '/car1.jpg', '/car3.jpg']
   },
   {
     slug: 'suzuki-swift-2021',
@@ -90,7 +90,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Karachi' },
       { label: 'Condition', value: 'Excellent' }
     ],
-    images: ['/img2.jpg', '/car-3.svg', '/car-1.svg']
+    images: ['/car3.jpg', '/car1.jpg', '/car2.jpg']
   }
 ];
 
@@ -144,3 +144,5 @@ export const blogPosts: BlogPost[] = [
     summary: 'Why ceramic coating is worth considering for long-term paint protection.'
   }
 ];
+
+

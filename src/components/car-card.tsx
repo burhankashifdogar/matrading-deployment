@@ -8,13 +8,15 @@ type CarCardProps = {
 };
 
 export function CarCard({ car }: CarCardProps) {
+  const engine = car.specs.find((spec) => spec.label === 'Engine')?.value;
+  const color = car.specs.find((spec) => spec.label === 'Color')?.value;
+
   return (
     <article className="car-card">
       <div className="card-image-wrap">
         <Image className="card-image" src={car.images[0]} alt={car.title} width={800} height={500} />
       </div>
       <div className="card-body">
-        <div className="eyebrow card-eyebrow">Car Sales</div>
         <h3 className="card-title">{car.title}</h3>
         <div className="card-details">
           <span>{car.year}</span>
@@ -24,7 +26,8 @@ export function CarCard({ car }: CarCardProps) {
         <div className="price">{car.price}</div>
         <div className="meta-row">
           <span className="meta">{car.mileage}</span>
-          <span className="meta">{car.bodyType}</span>
+          {engine && <span className="meta">{engine}</span>}
+          {color && <span className="meta">{color}</span>}
         </div>
         <div className="action-row">
           <Link className="button primary" href={`/car-sales/${car.slug}`}>
