@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import AnimatedNumber from '@/components/animated-number';
 
 const pillars = [
   {
@@ -31,7 +32,11 @@ export default function AboutPage() {
       <section className="content-wrap about-intro-section">
         <div className="about-copy-panel">
           <span className="about-eyebrow">About Us</span>
-          <h1>Your Trusted Partner for Quality Cars & Detailing Services</h1>
+          <h1>
+            Your Trusted Partner for Quality Cars &
+            <br />
+            Detailing Services
+          </h1>
           <p>
             At M.A Trading, we believe in quality, transparency, and customer satisfaction. With years of experience in the automotive industry, we provide the best used cars and professional detailing services under one roof.
           </p>
@@ -46,7 +51,16 @@ export default function AboutPage() {
         </div>
 
         <div className="about-image-panel">
-          <Image src="/hero-img.jpg" alt="M.A Trading showroom" width={1100} height={760} priority />
+          <div className="about-image-shape">
+            <Image
+              src="/about.png"
+              alt="About M.A Trading"
+              width={1100}
+              height={760}
+              className="about-image"
+              priority
+            />
+          </div>
         </div>
       </section>
 
@@ -74,15 +88,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="content-wrap about-standard-wrap">
-        <div className="about-standard-cta">
-          <h2>Ready to experience the M.A standard?</h2>
-          <p>
-            Whether you&apos;re looking to acquire a rare masterpiece or restore your current vehicle to its factory-fresh glory, our team is ready to assist.
-          </p>
-          <div className="about-standard-actions">
-            <Link href="/contact">Schedule a Consultation</Link>
-            <Link href="/car-sales">View Sales Inventory</Link>
+      <section className="stats-band">
+        <div className="content-wrap stats-grid">
+          <div className="stat">
+            <strong><AnimatedNumber to={500} duration={2600} suffix="+" /></strong>
+            <span>Cars Sold</span>
+          </div>
+          <div className="stat">
+            <strong><AnimatedNumber to={1000} duration={2800} suffix="+" /></strong>
+            <span>Happy Customers</span>
+          </div>
+          <div className="stat">
+            <strong><AnimatedNumber to={5} duration={2000} suffix="+" /></strong>
+            <span>Years of Experience</span>
+          </div>
+          <div className="stat">
+            <strong><AnimatedNumber to={100} duration={3000} suffix="%" /></strong>
+            <span>Client Satisfaction</span>
           </div>
         </div>
       </section>
