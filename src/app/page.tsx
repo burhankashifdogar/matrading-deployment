@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { CarCard } from '@/components/car-card';
 import { SectionHeading } from '@/components/section-heading';
+import AnimatedNumber from '@/components/animated-number';
 import { featuredCars } from '@/data/site';
 
 const features = [
@@ -26,7 +27,7 @@ const promos = [
     eyebrow: 'Car Detailing',
     title: 'Make Your Car Shine',
     description: 'Professional detailing services that restore your vehicle to showroom condition.',
-    points: ['Ceramic coating', 'Paint correction', 'Interior steam clean', 'Wheel polish'],
+    points: ['Ceramic coating', 'Paint correction', 'Interior steam clean'],
     cta: 'View Services',
     href: '/car-detailing',
     image: '/img2.jpg',
@@ -119,19 +120,19 @@ export default function HomePage() {
       <section className="stats-band">
         <div className="content-wrap stats-grid">
           <div className="stat">
-            <strong>500+</strong>
+            <strong><AnimatedNumber to={500} duration={2600} suffix="+" /></strong>
             <span>Cars Sold</span>
           </div>
           <div className="stat">
-            <strong>1000+</strong>
+            <strong><AnimatedNumber to={1000} duration={2800} suffix="+" /></strong>
             <span>Happy Customers</span>
           </div>
           <div className="stat">
-            <strong>5+</strong>
+            <strong><AnimatedNumber to={5} duration={2000} suffix="+" /></strong>
             <span>Years of Experience</span>
           </div>
           <div className="stat">
-            <strong>100%</strong>
+            <strong><AnimatedNumber to={100} duration={3000} suffix="%" /></strong>
             <span>Client Satisfaction</span>
           </div>
         </div>

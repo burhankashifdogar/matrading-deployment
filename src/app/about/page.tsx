@@ -32,7 +32,7 @@ export default function AboutPage() {
       <section className="content-wrap about-intro-section">
         <div className="about-copy-panel">
           <span className="about-eyebrow">About Us</span>
-          <h1>
+          <h1 className="hero-title">
             Your Trusted Partner for Quality Cars &
             <br />
             Detailing Services
