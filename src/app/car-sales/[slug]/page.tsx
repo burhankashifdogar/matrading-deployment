@@ -9,7 +9,7 @@ type CarDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-const fallbackGallery = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg', '/img2.jpg', '/hero-img.jpg'];
+const thumbnailImages = ['/int-1.jpg', '/int-2.jpg', '/int-3.jpg', '/int-4.jpg', '/int-5.jpg', '/int-6.jpg'];
 
 export function generateStaticParams() {
   return featuredCars.map((car) => ({ slug: car.slug }));
@@ -24,8 +24,6 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
   }
 
   const engine = car.specs.find((spec) => spec.label === 'Engine')?.value ?? car.bodyType;
-  const galleryImages = Array.from(new Set([...car.images, ...fallbackGallery])).slice(0, 6);
-  const totalPhotos = Math.max(12, galleryImages.length);
 
   return (
     <div className="stack car-detail-page">
@@ -38,7 +36,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
       </nav>
 
       <section className="content-wrap car-detail-layout">
-        <CarGallery images={galleryImages} title={car.title} totalPhotos={totalPhotos} />
+        <CarGallery mainImage={car.images[0] ?? '/img1.jpg'} thumbnailImages={thumbnailImages} title={car.title} />
 
         <aside className="car-detail-panel">
           <div className="car-detail-heading">
@@ -110,6 +108,3 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     </div>
   );
 }
-
-
-

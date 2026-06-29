@@ -1,25 +1,29 @@
 "use client";
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type CarGalleryProps = {
-  images: string[];
+  mainImage: string;
+  thumbnailImages: string[];
   title: string;
-  totalPhotos: number;
 };
 
-export function CarGallery({ images, title, totalPhotos }: CarGalleryProps) {
+export function CarGallery({ mainImage, thumbnailImages, title }: CarGalleryProps) {
+  const galleryImages = [mainImage, ...thumbnailImages];
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeImage = images[activeIndex] ?? images[0];
-  const hiddenPhotos = Math.max(0, totalPhotos - images.length);
+  const activeImage = galleryImages[activeIndex] ?? mainImage;
+
+  useEffect(() => {
+    setActiveIndex(0);
+  }, [mainImage, thumbnailImages]);
 
   const showPrevious = () => {
-    setActiveIndex((current) => (current === 0 ? images.length - 1 : current - 1));
+    setActiveIndex((current) => (current === 0 ? galleryImages.length - 1 : current - 1));
   };
 
   const showNext = () => {
-    setActiveIndex((current) => (current === images.length - 1 ? 0 : current + 1));
+    setActiveIndex((current) => (current === galleryImages.length - 1 ? 0 : current + 1));
   };
 
   return (
@@ -30,26 +34,24 @@ export function CarGallery({ images, title, totalPhotos }: CarGalleryProps) {
         <button className="gallery-arrow gallery-arrow-prev" type="button" onClick={showPrevious} aria-label="Show previous photo" />
         <button className="gallery-arrow gallery-arrow-next" type="button" onClick={showNext} aria-label="Show next photo" />
 
-        <div className="photo-count-badge" aria-label={`${totalPhotos} photos available`}>
-          <span aria-hidden="true">?</span>
-          {activeIndex + 1}/{totalPhotos} Photos
+        <div className="photo-count-badge" aria-label="Car gallery">
+          +{thumbnailImages.length} Photos
         </div>
       </div>
 
       <div className="detail-thumb-row" aria-label="Car image thumbnails">
-        {images.map((image, index) => {
-          const isLast = index === images.length - 1 && hiddenPhotos > 0;
+        {thumbnailImages.map((image, index) => {
+          const imageIndex = index + 1;
 
           return (
             <button
-              className={`detail-thumb ${index === activeIndex ? 'active' : ''}`}
+              className={`detail-thumb ${image === activeImage ? 'active' : ''}`}
               type="button"
               key={`${image}-${index}`}
-              onClick={() => setActiveIndex(index)}
-              aria-label={`Show ${title} photo ${index + 1}`}
+              onClick={() => setActiveIndex(imageIndex)}
+              aria-label={`Show ${title} interior photo ${imageIndex}`}
             >
-              <Image src={image} alt={`${title} thumbnail ${index + 1}`} width={240} height={170} />
-              {isLast && <span className="thumb-more">+{hiddenPhotos}</span>}
+              <Image src={image} alt={`${title} interior thumbnail ${imageIndex}`} width={240} height={170} />
             </button>
           );
         })}
