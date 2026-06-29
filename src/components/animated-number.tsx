@@ -6,12 +6,12 @@ type Props = {
   to: number;
   duration?: number;
   suffix?: string;
-}
+};
 
 export default function AnimatedNumber({ to, duration = 1400, suffix = '' }: Props) {
   const [value, setValue] = useState(0);
   const rafRef = useRef<number | null>(null);
-  const nodeRef = useRef<HTMLElement | null>(null);
+  const nodeRef = useRef<HTMLSpanElement | null>(null);
   const startedRef = useRef(false);
 
   useEffect(() => {
@@ -56,7 +56,11 @@ export default function AnimatedNumber({ to, duration = 1400, suffix = '' }: Pro
   }, [to, duration]);
 
   return (
-    <span ref={(el) => (nodeRef.current = el as HTMLElement)}>
+    <span
+      ref={(el) => {
+        nodeRef.current = el;
+      }}
+    >
       {value.toLocaleString()}
       {suffix}
     </span>

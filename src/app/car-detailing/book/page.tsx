@@ -35,7 +35,11 @@ export default function DetailingBookingPage() {
   return (
     <div className="booking-page booking-page-premium">
       <section className="content-wrap booking-precision-hero">
-        <h1>Book Your Precision Care</h1>
+        <h1 className="booking-precision-title">
+          BOOK YOUR
+          <br />
+          <span className="booking-precision-accent">PRECISION CARE</span>
+        </h1>
         <p>
           Restore your vehicle&apos;s showroom luster with our meticulous detailing services. Every session is an exercise in automotive perfection.
         </p>

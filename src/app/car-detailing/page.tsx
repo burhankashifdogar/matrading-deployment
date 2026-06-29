@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useMemo, useState } from 'react';
 
 type DetailingIconName = 'shine' | 'seat' | 'shield' | 'coating' | 'clean' | 'engine';
 
@@ -20,34 +23,36 @@ const detailingServices: DetailingService[] = [
   {
     title: 'Interior Detailing',
     description: 'Deep cleaning of interior surfaces.',
-    image: '/car1.jpg',
+    image: '/interior.jpg',
     icon: 'seat'
   },
   {
     title: 'Paint Protection',
     description: "Protect your car's paint from damage.",
-    image: '/car2.jpg',
+    image: '/painting.jpg',
     icon: 'shield'
   },
   {
     title: 'Ceramic Coating',
     description: 'Long-lasting protection with ceramic finish.',
-    image: '/hero-img.jpg',
+    image: '/ceramic coating.jpg',
     icon: 'coating'
   },
   {
     title: 'Deep Cleaning',
     description: 'Thorough cleaning of every corner.',
-    image: '/pexels-pareekshith-indeever-155333695-10697770.jpg',
+    image: '/deep.jpg',
     icon: 'clean'
   },
   {
     title: 'Engine Bay Cleaning',
     description: 'Clean and degrease engine compartment.',
-    image: '/car3.jpg',
+    image: '/engine cleaning.jpg',
     icon: 'engine'
   }
 ];
+
+const SERVICES_PER_PAGE = 6;
 
 function DetailingIcon({ name }: { name: DetailingIconName }) {
   const commonProps = {
@@ -128,6 +133,15 @@ function DetailingIcon({ name }: { name: DetailingIconName }) {
 }
 
 export default function CarDetailingPage() {
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const totalPages = Math.max(1, Math.ceil(detailingServices.length / SERVICES_PER_PAGE));
+
+  const visibleServices = useMemo(() => {
+    const startIndex = (currentPage - 1) * SERVICES_PER_PAGE;
+    return detailingServices.slice(startIndex, startIndex + SERVICES_PER_PAGE);
+  }, [currentPage]);
+
   return (
     <div className="detailing-page">
       <section className="detailing-hero-band">
@@ -139,10 +153,10 @@ export default function CarDetailingPage() {
 
       <section className="content-wrap detailing-services-wrap">
         <div className="detailing-services-grid">
-          {detailingServices.map((service) => (
+          {visibleServices.map((service) => (
             <article className="detailing-service-card" key={service.title}>
               <div className="detailing-service-image">
-                <Image src={service.image} alt={service.title} width={520} height={300} />
+                <Image src={service.image} alt={service.title} width={620} height={360} />
               </div>
               <div className="detailing-service-body">
                 <span className={`detailing-service-icon icon-${service.icon}`} aria-hidden="true">
@@ -153,6 +167,38 @@ export default function CarDetailingPage() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="pagination-wrap detailing-pagination" aria-label="Detailing service pagination">
+          <button className="pagination-arrow" type="button" onClick={() => setCurrentPage((page) => Math.max(1, page - 1))} disabled={currentPage === 1}>
+            Previous
+          </button>
+
+          <div className="pagination-numbers">
+            {Array.from({ length: totalPages }, (_, index) => {
+              const pageNum = index + 1;
+
+              return (
+                <button
+                  key={pageNum}
+                  className={`page-btn ${pageNum === currentPage ? 'active' : ''}`}
+                  type="button"
+                  onClick={() => setCurrentPage(pageNum)}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+          </div>
+
+          <button
+            className="pagination-arrow"
+            type="button"
+            onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </button>
         </div>
 
         <div className="detailing-cta-strip">
