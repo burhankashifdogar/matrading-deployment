@@ -189,19 +189,6 @@ textarea {
   }
 }
 
-/* About check list bullet dot */
-.about-check-list span::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.25rem;
-  width: 0.8rem;
-  height: 0.8rem;
-  border-radius: 999px;
-  background: #e8f7fa;
-  box-shadow: inset 0 0 0 3px #1fa7b8;
-}
-
 /* About pillar icon pseudo-shapes */
 .about-pillar-icon::before,
 .about-pillar-icon::after {

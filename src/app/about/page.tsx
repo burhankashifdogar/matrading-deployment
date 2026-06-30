@@ -26,6 +26,44 @@ const pillars = [
   }
 ];
 
+function PillarIcon({ name }: { name: string }) {
+  const commonProps = {
+    width: 24,
+    height: 24,
+    viewBox: '0 0 24 24',
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeWidth: 2,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const
+  };
+  switch (name) {
+    case 'flag':
+      return (
+        <svg {...commonProps}>
+          <path d="M4 3v18" />
+          <path d="M4 4h12l-2 4 2 4H4" />
+        </svg>
+      );
+    case 'eye':
+      return (
+        <svg {...commonProps}>
+          <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      );
+    case 'shield':
+      return (
+        <svg {...commonProps}>
+          <path d="M12 3l7 3v5c0 4.5-2.8 8-7 10-4.2-2-7-5.5-7-10V6l7-3z" />
+          <path d="M9 12l2 2 4-5" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
 export default function AboutPage() {
   return (
     <div className="bg-white pt-[2.4rem]">
@@ -34,26 +72,30 @@ export default function AboutPage() {
       <section className="w-full px-[clamp(16px,2vw,24px)] grid grid-cols-[1fr_0.86fr] gap-8 items-start py-[48px_40px] max-[980px]:grid-cols-1">
 
         {/* Copy Panel */}
-        <div className="grid gap-[1.1rem] items-start justify-items-start max-w-[46ch] max-[980px]:max-w-full">
+        <div className="grid gap-[1.1rem] items-start justify-items-start max-w-[600px] max-[980px]:max-w-full">
           <span className="text-[#1fa7b8] text-[0.78rem] font-extrabold tracking-[0.18em] uppercase">
             About Us
           </span>
 
-          <h1 className="m-0 text-[#063e66] text-[clamp(2.2rem,4vw,4rem)] leading-[1.08] tracking-[-0.04em]">
-            Your Trusted Partner for Quality Cars &amp;
-            <br />
-            Detailing Services
+          <h1 className="m-0 max-w-[50ch] text-[#063e66] text-[clamp(2.2rem,4vw,4rem)] leading-[1.08] tracking-[-0.04em] font-medium">
+            Your Trusted Partner for Quality Cars &amp; Detailing Services
           </h1>
 
-          <p className="m-0 text-[#40536b] text-base leading-[1.85]">
+          <p className="m-0 max-w-[60ch] text-[#40536b] text-base leading-[1.85]">
             At M.A Trading, we believe in quality, transparency, and customer satisfaction. With years of experience in the automotive industry, we provide the best used cars and professional detailing services under one roof.
           </p>
 
-          {/* Check List — keeping about-check-list class because ::before pseudo element */}
-          <div className="about-check-list">
-            <span>Quality Inspected Cars</span>
-            <span>Transparent Deals</span>
-            <span>Customer First Approach</span>
+          {/* Check List */}
+          <div className="grid gap-[0.65rem]">
+            <span className="relative block pl-6 text-[#2d435b] text-[0.95rem] font-semibold before:content-[''] before:absolute before:left-0 before:top-1 before:w-[0.8rem] before:h-[0.8rem] before:rounded-full before:bg-[#e8f7fa] before:shadow-[inset_0_0_0_3px_#1fa7b8]">
+              Quality Inspected Cars
+            </span>
+            <span className="relative block pl-6 text-[#2d435b] text-[0.95rem] font-semibold before:content-[''] before:absolute before:left-0 before:top-1 before:w-[0.8rem] before:h-[0.8rem] before:rounded-full before:bg-[#e8f7fa] before:shadow-[inset_0_0_0_3px_#1fa7b8]">
+              Transparent Deals
+            </span>
+            <span className="relative block pl-6 text-[#2d435b] text-[0.95rem] font-semibold before:content-[''] before:absolute before:left-0 before:top-1 before:w-[0.8rem] before:h-[0.8rem] before:rounded-full before:bg-[#e8f7fa] before:shadow-[inset_0_0_0_3px_#1fa7b8]">
+              Customer First Approach
+            </span>
           </div>
 
           <Link
@@ -107,15 +149,15 @@ export default function AboutPage() {
               ].join(' ')}
               key={pillar.title}
             >
-              {/* Icon — keeping about-pillar-icon class because complex ::before/::after CSS icons */}
+              {/* Icon */}
               <span
-                className={[
-                  'about-pillar-icon',
-                  `icon-${pillar.icon}`,
+                className={`relative inline-grid place-items-center w-12 h-12 rounded-xl ${
                   index === 1 ? 'bg-[#063e66] text-white' : 'bg-[#eaf3ff] text-[#063e66]'
-                ].join(' ')}
+                }`}
                 aria-hidden="true"
-              />
+              >
+                <PillarIcon name={pillar.icon} />
+              </span>
 
               <h3 className="m-0 text-[#063e66] text-[1.08rem] font-[750]">
                 {pillar.title}
@@ -132,9 +174,21 @@ export default function AboutPage() {
                   {pillar.bullets.map((item) => (
                     <li
                       key={item}
-                      className="relative pl-[1.55rem] text-[#2d435b] text-[0.9rem] leading-[1.45] before:content-[''] before:absolute before:left-0 before:top-[0.25rem] before:w-[0.65rem] before:h-[0.65rem] before:border-2 before:border-[#063e66] before:rounded-full"
+                      className="flex items-start gap-2 text-[#2d435b] text-[0.9rem] leading-[1.45]"
                     >
-                      {item}
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#063e66"
+                        strokeWidth={2}
+                        className="flex-none mt-[0.15rem]"
+                      >
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M9 12l2 2 4-5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>

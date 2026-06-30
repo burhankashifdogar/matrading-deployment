@@ -35,6 +35,12 @@ const promos = [
   }
 ];
 
+const bannerPoints = [
+  'Fresh arrivals every week',
+  'Verified, inspected inventory',
+  'Quick contact and test-drive booking'
+];
+
 export default function HomePage() {
   return (
     <>
@@ -120,31 +126,70 @@ export default function HomePage() {
         <div className="w-full px-[clamp(16px,2vw,24px)] grid justify-items-center text-center gap-[18px]">
           <SectionHeading title="FEATURED CARS" />
           <div className="grid grid-cols-4 gap-4 mt-[18px] w-full max-[1080px]:grid-cols-2 max-[720px]:grid-cols-1">
-            {featuredCars.map((car) => (
-              <CarCard key={car.slug} car={car} />
+            {featuredCars.concat(featuredCars).map((car, index) => (
+              <CarCard key={`${car.slug}-${index}`} car={car} />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Stats band */}
-      <section className="bg-brand mt-[38px] py-7">
-        <div className="w-full px-[clamp(16px,2vw,24px)] grid grid-cols-4 gap-4 max-[1080px]:grid-cols-2 max-[720px]:grid-cols-1">
-          {[
-            { to: 500, duration: 2600, suffix: '+', label: 'Cars Sold' },
-            { to: 1000, duration: 2800, suffix: '+', label: 'Happy Customers' },
-            { to: 5, duration: 2000, suffix: '+', label: 'Years of Experience' },
-            { to: 100, duration: 3000, suffix: '%', label: 'Client Satisfaction' },
-          ].map(({ to, duration, suffix, label }) => (
-            <div key={label} className="text-white text-center">
-              <strong className="block text-[clamp(1.6rem,3.6vw,2.6rem)] font-extrabold leading-none">
-                <AnimatedNumber to={to} duration={duration} suffix={suffix} />
-              </strong>
-              <span className="block text-[clamp(0.78rem,1.2vw,0.95rem)] uppercase tracking-[0.12em] font-bold mt-1.5 opacity-95">{label}</span>
+      {/* Promotional banner */}
+      <section className="w-full px-[clamp(16px,2vw,24px)] mt-9">
+        <div className="relative overflow-hidden rounded-[30px] border border-[rgba(10,58,104,0.08)] bg-[linear-gradient(135deg,#102739_0%,#1f435f_54%,#0d6671_100%)] shadow-[0_24px_60px_rgba(8,20,40,0.14)]">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(31,167,184,0.24),transparent_26%),radial-gradient(circle_at_12%_82%,rgba(255,255,255,0.08),transparent_28%),repeating-linear-gradient(135deg,rgba(255,255,255,0.04)_0_1px,transparent_1px_18px)] opacity-70" />
+          <div className="relative grid grid-cols-[1.15fr_0.85fr] items-center gap-8 px-8 py-10 max-[1080px]:grid-cols-1 max-[720px]:px-5 max-[720px]:py-8">
+            <div className="text-white">
+              <div className="inline-flex items-center gap-2 rounded-full border border-[rgba(255,255,255,0.22)] bg-[rgba(255,255,255,0.08)] px-4 py-2 text-[0.72rem] font-bold uppercase tracking-[0.18em] text-[rgba(255,255,255,0.9)]">
+                Special Offer
+              </div>
+              <h2 className="mt-4 mb-3 text-[clamp(1.9rem,3vw,3rem)] leading-[1.02] tracking-[-0.05em] font-extrabold">
+                Looking for your next car?
+                <br />
+                We have got the right deal waiting.
+              </h2>
+              <p className="max-w-[52ch] text-[rgba(255,255,255,0.9)] text-[0.98rem] leading-[1.8]">
+                Explore freshly selected cars, compare options quickly, and get in touch with our team for a fast response.
+              </p>
+              <ul className="grid gap-3 mt-5 mb-0 p-0 list-none">
+                {bannerPoints.map((point) => (
+                  <li key={point} className="relative pl-7 text-[0.94rem] text-[rgba(255,255,255,0.92)] before:content-['+'] before:absolute before:left-0 before:top-0 before:text-brand-2 before:font-bold">
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-3 mt-7">
+                <Link
+                  href="/car-sales"
+                  className="inline-flex items-center justify-center rounded-[12px] bg-white px-5 py-[0.95rem] text-brand font-bold text-[0.92rem] shadow-[0_14px_26px_rgba(0,0,0,0.14)] transition hover:-translate-y-px no-underline"
+                >
+                  Browse Inventory
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center rounded-[12px] border border-[rgba(255,255,255,0.26)] bg-[rgba(255,255,255,0.06)] px-5 py-[0.95rem] text-white font-bold text-[0.92rem] transition hover:-translate-y-px hover:bg-[rgba(255,255,255,0.12)] no-underline"
+                >
+                  Contact Us
+                </Link>
+              </div>
             </div>
-          ))}
+
+            <div className="relative min-h-[320px] overflow-hidden rounded-[20px] border border-[rgba(255,255,255,0.12)] bg-[rgba(255,255,255,0.06)] shadow-[0_18px_40px_rgba(0,0,0,0.18)] max-[720px]:min-h-[250px]">
+              <Image
+                src="/hero-img.jpg"
+                alt="Promotional car banner"
+                fill
+                className="object-cover object-center scale-[1.08]"
+              />
+              <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(8,25,48,0.08),rgba(8,25,48,0.5))]" />
+              <div className="absolute bottom-4 left-4 right-4 rounded-[18px] border border-[rgba(255,255,255,0.16)] bg-[rgba(7,25,46,0.62)] p-4 text-white backdrop-blur-[8px]">
+                <div className="text-[0.7rem] uppercase tracking-[0.2em] text-[rgba(255,255,255,0.72)]">Featured promotion</div>
+                <div className="mt-1 text-[1.1rem] font-bold leading-tight">Drive away with confidence and a cleaner deal.</div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
   );
 }
+
