@@ -188,51 +188,6 @@ textarea {
     width: min(100%, 100%);
   }
 }
-
-/* About pillar icon pseudo-shapes */
-.about-pillar-icon::before,
-.about-pillar-icon::after {
-  content: '';
-  position: absolute;
-  border-color: currentColor;
-}
-.about-pillar-icon.icon-flag::before {
-  left: 18px; top: 14px;
-  width: 2px; height: 24px;
-  background: currentColor;
-}
-.about-pillar-icon.icon-flag::after {
-  left: 20px; top: 14px;
-  width: 14px; height: 10px;
-  border: 2px solid currentColor;
-  border-left: 0;
-}
-.about-pillar-icon.icon-eye::before {
-  left: 13px; top: 19px;
-  width: 26px; height: 14px;
-  border: 2px solid currentColor;
-  border-radius: 999px / 70%;
-}
-.about-pillar-icon.icon-eye::after {
-  left: 23px; top: 23px;
-  width: 6px; height: 6px;
-  border-radius: 999px;
-  background: currentColor;
-}
-.about-pillar-icon.icon-shield::before {
-  left: 16px; top: 12px;
-  width: 20px; height: 25px;
-  border: 2px solid currentColor;
-  border-radius: 12px 12px 14px 14px;
-}
-.about-pillar-icon.icon-shield::after {
-  left: 22px; top: 21px;
-  width: 8px; height: 4px;
-  border-left: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: rotate(-45deg);
-}
-
 /* Detail feature item check dot */
 .detail-feature-item span::before {
   content: '';

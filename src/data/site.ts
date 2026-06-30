@@ -142,7 +142,26 @@ export const blogPosts: BlogPost[] = [
     category: 'Detailing',
     date: 'May 1, 2026',
     summary: 'Why ceramic coating is worth considering for long-term paint protection.'
+  },
+  {
+    slug: 'how-to-prepare-your-car-for-sale',
+    title: 'How to Prepare Your Car Before Selling',
+    category: 'Selling Guide',
+    date: 'April 24, 2026',
+    summary: 'Small presentation and service checks that help buyers feel more confident.'
+  },
+  {
+    slug: 'interior-cleaning-mistakes-to-avoid',
+    title: 'Interior Cleaning Mistakes to Avoid',
+    category: 'Car Care',
+    date: 'April 18, 2026',
+    summary: 'Common cleaning habits that can damage trims, leather, fabric, and dashboard surfaces.'
+  },
+  {
+    slug: 'when-your-car-needs-professional-detailing',
+    title: 'When Your Car Needs Professional Detailing',
+    category: 'Detailing',
+    date: 'April 10, 2026',
+    summary: 'Clear signs that your vehicle needs deeper care than a regular wash can provide.'
   }
 ];
-
-
