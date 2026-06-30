@@ -9,11 +9,15 @@ type PageShellProps = {
 
 export function PageShell({ eyebrow, title, description, children }: PageShellProps) {
   return (
-    <section className="page-hero">
-      <div className="content-wrap">
-        {eyebrow ? <div className="eyebrow">{eyebrow}</div> : null}
-        <h1 className="page-title">{title}</h1>
-        {description ? <p className="section-copy">{description}</p> : null}
+    <section className="pt-7 pb-0">
+      <div className="w-full px-[clamp(16px,2vw,24px)]">
+        {eyebrow ? (
+          <div className="inline-flex items-center gap-2 text-brand-2 text-[0.78rem] font-extrabold uppercase tracking-[0.16em]">
+            {eyebrow}
+          </div>
+        ) : null}
+        <h1 className="mt-2 mb-0 text-[clamp(2rem,4vw,3.3rem)] font-bold">{title}</h1>
+        {description ? <p className="text-muted max-w-[58ch] leading-[1.65]">{description}</p> : null}
         {children}
       </div>
     </section>

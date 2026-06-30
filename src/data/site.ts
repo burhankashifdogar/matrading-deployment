@@ -3,8 +3,8 @@ import type { BlogPost, Car, NavItem, Service } from '@/types/site';
 export const brand = {
   name: 'M.A Trading',
   domain: 'matrading.pk',
-  phone: '+92 312 3456790',
-  whatsapp: '+923123456790',
+  phone: '+92 312 999999',
+  whatsapp: '+92312999999',
   email: 'info@matrading.pk',
   address: '123 Main Boulevard, Lahore, Pakistan'
 };
@@ -36,7 +36,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Lahore' },
       { label: 'Condition', value: 'Excellent' }
     ],
-    images: ['/img1.jpg', '/car-2.svg', '/car-3.svg']
+    images: ['/img1.jpg', '/car1.jpg', '/car2.jpg']
   },
   {
     slug: 'honda-civic-2020',
@@ -54,7 +54,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Islamabad' },
       { label: 'Condition', value: 'Premium' }
     ],
-    images: ['/img2.jpg', '/car-3.svg', '/car-1.svg']
+    images: ['/car1.jpg', '/car2.jpg', '/car3.jpg']
   },
   {
     slug: 'hyundai-elantra-2022',
@@ -72,7 +72,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Karachi' },
       { label: 'Condition', value: 'Like New' }
     ],
-    images: ['/hero-img.png', '/img1.jpg', '/car-2.svg']
+    images: ['/car2.jpg', '/car1.jpg', '/car3.jpg']
   },
   {
     slug: 'suzuki-swift-2021',
@@ -90,7 +90,7 @@ export const featuredCars: Car[] = [
       { label: 'Registered', value: 'Karachi' },
       { label: 'Condition', value: 'Excellent' }
     ],
-    images: ['/img2.jpg', '/car-3.svg', '/car-1.svg']
+    images: ['/car3.jpg', '/car1.jpg', '/car2.jpg']
   }
 ];
 
@@ -142,5 +142,26 @@ export const blogPosts: BlogPost[] = [
     category: 'Detailing',
     date: 'May 1, 2026',
     summary: 'Why ceramic coating is worth considering for long-term paint protection.'
+  },
+  {
+    slug: 'how-to-prepare-your-car-for-sale',
+    title: 'How to Prepare Your Car Before Selling',
+    category: 'Selling Guide',
+    date: 'April 24, 2026',
+    summary: 'Small presentation and service checks that help buyers feel more confident.'
+  },
+  {
+    slug: 'interior-cleaning-mistakes-to-avoid',
+    title: 'Interior Cleaning Mistakes to Avoid',
+    category: 'Car Care',
+    date: 'April 18, 2026',
+    summary: 'Common cleaning habits that can damage trims, leather, fabric, and dashboard surfaces.'
+  },
+  {
+    slug: 'when-your-car-needs-professional-detailing',
+    title: 'When Your Car Needs Professional Detailing',
+    category: 'Detailing',
+    date: 'April 10, 2026',
+    summary: 'Clear signs that your vehicle needs deeper care than a regular wash can provide.'
   }
 ];
