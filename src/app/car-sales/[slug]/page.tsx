@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import { CarGallery } from '@/components/car-gallery';
+import { CarCard } from '@/components/car-card';
+import { SectionHeading } from '@/components/section-heading';
 import { brand, featuredCars } from '@/data/site';
 import { formatPhoneForWhatsApp } from '@/lib/utils';
 
@@ -24,6 +26,26 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
   }
 
   const engine = car.specs.find((spec) => spec.label === 'Engine')?.value ?? car.bodyType;
+  const relatedCars = [...featuredCars]
+    .filter((item) => item.slug !== car.slug)
+    .sort((a, b) => {
+      const aScore =
+        Number(a.bodyType === car.bodyType) * 3 +
+        Number(a.fuelType === car.fuelType) * 2 +
+        Number(a.transmission === car.transmission);
+      const bScore =
+        Number(b.bodyType === car.bodyType) * 3 +
+        Number(b.fuelType === car.fuelType) * 2 +
+        Number(b.transmission === car.transmission);
+
+      return bScore - aScore;
+    });
+
+  const relatedCarsForDisplay = [...relatedCars.slice(0, 4)];
+
+  if (relatedCarsForDisplay.length < 4) {
+    relatedCarsForDisplay.push(car);
+  }
 
   return (
     <div className="grid gap-4 bg-[#f5f8fe] pt-[1.6rem]">
@@ -46,7 +68,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
         <aside className="grid gap-7 rounded-[8px] bg-white shadow-detail min-h-[590px] p-8 max-[1080px]:p-[1.65rem] max-[1080px]:min-h-auto">
           {/* Heading */}
           <div className="grid gap-3 pb-5 border-b border-[rgba(10,58,104,0.07)]">
-            <h1 className="m-0 text-[#063e66] text-[clamp(1.95rem,2.5vw,2.55rem)] leading-[1.05] tracking-[-0.04em] font-[650]">{car.title} Altis</h1>
+            <h1 className="m-0 text-[#063e66] text-[clamp(1.95rem,2.5vw,2.55rem)] leading-[1.05] tracking-[-0.04em] font-[650]">{car.title}</h1>
             <p className="m-0 text-[#283d55] text-base font-normal">{engine} | {car.year} Model</p>
             <div className="flex flex-wrap gap-[0.65rem] mt-[0.3rem]">
               <span className="rounded-full bg-[#e7f1ff] text-[#063e66] px-3 py-[0.4rem] text-[0.66rem] font-extrabold tracking-[0.08em] uppercase">Verified</span>
@@ -119,6 +141,22 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
           </div>
         </div>
       </section>
+
+      {/* Related cars */}
+      <section className="bg-[#eef4fb] py-16 mt-4">
+        <div className="w-full px-[clamp(16px,2vw,24px)]">
+          <SectionHeading
+            eyebrow="Related Listings"
+            title="More Cars You May Like"
+          />
+          <div className="grid grid-cols-4 gap-4 mt-8 max-[1080px]:grid-cols-2 max-[720px]:grid-cols-1">
+            {relatedCarsForDisplay.map((relatedCar) => (
+              <CarCard key={`${relatedCar.slug}-${relatedCar.slug === car.slug ? 'current' : 'related'}`} car={relatedCar} />
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
+
