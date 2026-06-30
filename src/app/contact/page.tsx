@@ -98,8 +98,7 @@ function ContactIcon({ name }: { name: string }) {
 export default function ContactPage() {
   return (
     <div className="bg-[#f5f7fc] py-8 pb-16">
-      <section className="w-full px-[clamp(16px,2vw,24px)] grid grid-cols-[minmax(0,1fr)_minmax(420px,560px)] gap-[2.2rem] items-start max-[980px]:grid-cols-1">
-
+<section className="w-full max-w-[1440px] mx-auto px-[clamp(20px,5vw,64px)] grid grid-cols-[1.1fr_1fr] gap-[clamp(1.5rem,4vw,3rem)] items-start max-[980px]:grid-cols-1">
         {/* Left: Intro Panel */}
         <div className="grid gap-[1.2rem] pt-4">
           {/* Eyebrow */}
@@ -183,9 +182,8 @@ export default function ContactPage() {
         </div>
 
         {/* Right: Form Panel */}
-        <div className="flex justify-end max-[980px]:justify-stretch">
-          <div className="w-full max-w-[560px] bg-white rounded-sm shadow-[0_18px_42px_rgba(8,20,40,0.04)] p-[2rem_2rem_1.6rem] max-[980px]:max-w-none">
-            <h2 className="m-0 text-[#0b2745] text-[clamp(1.75rem,2.5vw,2.15rem)] leading-[1.05] tracking-[-0.04em]">
+<div className="w-full">
+<div className="w-full mt-[4.2rem] bg-white rounded-sm shadow-[0_18px_42px_rgba(8,20,40,0.04)] p-[2rem_2rem_1.6rem]">            <h2 className="m-0 text-[#0b2745] text-[clamp(1.75rem,2.5vw,2.15rem)] leading-[1.05] tracking-[-0.04em]">
               Send us a Message
             </h2>
             <p className="mt-[0.7rem] mb-[1.6rem] text-[#6b7d93] text-[0.95rem] leading-[1.6]">
