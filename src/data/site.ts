@@ -3,8 +3,8 @@ import type { BlogPost, Car, NavItem, Service } from '@/types/site';
 export const brand = {
   name: 'M.A Trading',
   domain: 'matrading.pk',
-  phone: '+92 312 3456790',
-  whatsapp: '+923123456790',
+  phone: '+92 312 999999',
+  whatsapp: '+92312999999',
   email: 'info@matrading.pk',
   address: '123 Main Boulevard, Lahore, Pakistan'
 };

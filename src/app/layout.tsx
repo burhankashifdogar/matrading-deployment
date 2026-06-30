@@ -19,7 +19,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <div className="page-frame">
+        <div className="w-full">
           <SiteHeader />
           <main>{children}</main>
           <SiteFooter />

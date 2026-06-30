@@ -97,38 +97,84 @@ function ContactIcon({ name }: { name: string }) {
 
 export default function ContactPage() {
   return (
-    <div className="contact-page contact-page-split">
-      <section className="content-wrap contact-hero-grid">
-        <div className="contact-intro-panel">
-          <span className="contact-eyebrow">Get in touch</span>
-          <h1 className="contact-hero-title">Let&apos;s Discuss Your Automotive Vision.</h1>
-          <p>
+    <div className="bg-[#f5f7fc] py-8 pb-16">
+      <section className="w-full px-[clamp(16px,2vw,24px)] grid grid-cols-[minmax(0,1fr)_minmax(420px,560px)] gap-[2.2rem] items-start max-[980px]:grid-cols-1">
+
+        {/* Left: Intro Panel */}
+        <div className="grid gap-[1.2rem] pt-4">
+          {/* Eyebrow */}
+          <span className="text-[#1fa7b8] text-[0.76rem] font-extrabold tracking-[0.22em] uppercase">
+            Get in touch
+          </span>
+
+          {/* Title */}
+          <h1 className="m-0 max-w-[50ch] text-[#063e66] text-[clamp(2.2rem,4vw,4rem)] leading-[1.08] tracking-[-0.04em] font-medium max-[700px]:text-[clamp(2.1rem,10vw,3rem)]">
+            Let&apos;s Discuss Your Automotive Vision.
+          </h1>
+
+          {/* Subtitle */}
+          <p className="max-w-[60ch] m-0 text-[#53657a] text-[0.98rem] leading-[1.7]">
             Whether you&apos;re looking for a bespoke detailing consultation or inquiring about our curated vehicle collection, our team of specialists is ready to assist with clinical precision.
           </p>
 
-          <div className="contact-details-stack">
+          {/* Contact Details */}
+          <div className="grid gap-4 mt-[0.8rem]">
             {contactItems.map((item) => (
-              <div className="contact-detail-item" key={item.title}>
-                <span className={`contact-detail-icon icon-${item.icon}`} aria-hidden="true">
+              <div className="grid grid-cols-[48px_minmax(0,1fr)] gap-[0.9rem] items-start" key={item.title}>
+                {/* Icon */}
+                <span
+                  className="w-10 h-10 flex items-center justify-center rounded-xl bg-[#eaf3fd] text-[#063e66] shadow-[inset_0_0_0_1px_rgba(6,62,102,0.05)]"
+                  aria-hidden="true"
+                >
                   <ContactIcon name={item.icon} />
                 </span>
+
+                {/* Content */}
                 <div>
-                  <strong>{item.title}</strong>
-                  {item.title === 'Phone' && <a href={`tel:${brand.phone.replace(/\s/g, '')}`}>{item.lines[0]}</a>}
-                  {item.title === 'Email' && <a href={`mailto:${brand.email}`}>{item.lines[0]}</a>}
-                  {item.title === 'Studio Address' && <p>{item.lines[0]}</p>}
-                  {item.title === 'Working Hours' && <p>{item.lines[0]}</p>}
-                  <span>{item.lines[1]}</span>
+                  <strong className="block text-[#0b2745] text-[1.02rem] font-[750] mb-[0.15rem]">
+                    {item.title}
+                  </strong>
+                  {item.title === 'Phone' && (
+                    <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="block text-[#0d2d52] font-bold text-[0.9rem] leading-[1.45]">
+                      {item.lines[0]}
+                    </a>
+                  )}
+                  {item.title === 'Email' && (
+                    <a href={`mailto:${brand.email}`} className="block text-[#0d2d52] font-bold text-[0.9rem] leading-[1.45]">
+                      {item.lines[0]}
+                    </a>
+                  )}
+                  {item.title === 'Studio Address' && (
+                    <p className="block text-[#6b7d93] text-[0.9rem] leading-[1.45] m-0">
+                      {item.lines[0]}
+                    </p>
+                  )}
+                  {item.title === 'Working Hours' && (
+                    <p className="block text-[#6b7d93] text-[0.9rem] leading-[1.45] m-0">
+                      {item.lines[0]}
+                    </p>
+                  )}
+                  <span className="block text-[#6b7d93] text-[0.9rem] leading-[1.45]">
+                    {item.lines[1]}
+                  </span>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="contact-social-block">
-            <span>Connect with us</span>
-            <div className="contact-social-row">
+          {/* Social Block */}
+          <div className="mt-[0.8rem] pt-[1.2rem] border-t border-[rgba(6,62,102,0.08)]">
+            <span className="block mb-[0.75rem] text-[#6b7d93] text-[0.72rem] font-extrabold tracking-[0.18em] uppercase">
+              Connect with us
+            </span>
+            <div className="flex gap-[0.7rem]">
               {socialLinks.map((link) => (
-                <a key={link.label} href={link.href} className="contact-social-link" aria-label={link.label}>
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="inline-grid w-[34px] h-[34px] place-items-center border border-[rgba(6,62,102,0.18)] rounded bg-white text-[#0b2745] hover:text-[#063e66] transition-colors"
+                  aria-label={link.label}
+                >
                   <ContactIcon name={link.icon} />
                 </a>
               ))}
@@ -136,34 +182,64 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="contact-form-panel">
-          <div className="contact-form-card">
-            <h2>Send us a Message</h2>
-            <p>Fill out the form below and one of our consultants will reach out to you shortly.</p>
+        {/* Right: Form Panel */}
+        <div className="flex justify-end max-[980px]:justify-stretch">
+          <div className="w-full max-w-[560px] bg-white rounded-sm shadow-[0_18px_42px_rgba(8,20,40,0.04)] p-[2rem_2rem_1.6rem] max-[980px]:max-w-none">
+            <h2 className="m-0 text-[#0b2745] text-[clamp(1.75rem,2.5vw,2.15rem)] leading-[1.05] tracking-[-0.04em]">
+              Send us a Message
+            </h2>
+            <p className="mt-[0.7rem] mb-[1.6rem] text-[#6b7d93] text-[0.95rem] leading-[1.6]">
+              Fill out the form below and one of our consultants will reach out to you shortly.
+            </p>
 
-            <form className="contact-form-grid">
-              <div className="contact-form-row">
-                <div className="contact-field">
-                  <label htmlFor="contactFullName">Full Name</label>
-                  <input id="contactFullName" placeholder="John Doe" />
+            <form className="grid gap-[1.1rem]">
+              {/* Row 1 */}
+              <div className="grid grid-cols-2 gap-[1.1rem] max-[700px]:grid-cols-1">
+                <div className="grid gap-[0.45rem]">
+                  <label htmlFor="contactFullName" className="text-[#6b7d93] text-[0.68rem] font-extrabold tracking-[0.18em] uppercase">
+                    Full Name
+                  </label>
+                  <input
+                    id="contactFullName"
+                    placeholder="John Doe"
+                    className="w-full border-0 border-b border-[rgba(6,62,102,0.14)] bg-transparent py-[0.25rem] pb-[0.65rem] text-[#0b2745] text-[0.94rem] outline-none placeholder:text-[#c9d1db]"
+                  />
                 </div>
-                <div className="contact-field">
-                  <label htmlFor="contactEmail">Email Address</label>
-                  <input id="contactEmail" type="email" placeholder="john@example.com" />
+                <div className="grid gap-[0.45rem]">
+                  <label htmlFor="contactEmail" className="text-[#6b7d93] text-[0.68rem] font-extrabold tracking-[0.18em] uppercase">
+                    Email Address
+                  </label>
+                  <input
+                    id="contactEmail"
+                    type="email"
+                    placeholder="john@example.com"
+                    className="w-full border-0 border-b border-[rgba(6,62,102,0.14)] bg-transparent py-[0.25rem] pb-[0.65rem] text-[#0b2745] text-[0.94rem] outline-none placeholder:text-[#c9d1db]"
+                  />
                 </div>
               </div>
 
-              <div className="contact-form-row">
-                <div className="contact-field">
-                  <label htmlFor="contactPhone">Phone Number</label>
-                  <input id="contactPhone" placeholder="+44 000 000 0000" />
+              {/* Row 2 */}
+              <div className="grid grid-cols-2 gap-[1.1rem] max-[700px]:grid-cols-1">
+                <div className="grid gap-[0.45rem]">
+                  <label htmlFor="contactPhone" className="text-[#6b7d93] text-[0.68rem] font-extrabold tracking-[0.18em] uppercase">
+                    Phone Number
+                  </label>
+                  <input
+                    id="contactPhone"
+                    placeholder="+44 000 000 0000"
+                    className="w-full border-0 border-b border-[rgba(6,62,102,0.14)] bg-transparent py-[0.25rem] pb-[0.65rem] text-[#0b2745] text-[0.94rem] outline-none placeholder:text-[#c9d1db]"
+                  />
                 </div>
-                <div className="contact-field">
-                  <label htmlFor="contactSubject">Subject</label>
-                  <select id="contactSubject" defaultValue="">
-                    <option value="" disabled>
-                      General Inquiry
-                    </option>
+                <div className="grid gap-[0.45rem]">
+                  <label htmlFor="contactSubject" className="text-[#6b7d93] text-[0.68rem] font-extrabold tracking-[0.18em] uppercase">
+                    Subject
+                  </label>
+                  <select
+                    id="contactSubject"
+                    defaultValue=""
+                    className="w-full border-0 border-b border-[rgba(6,62,102,0.14)] bg-transparent py-[0.25rem] pb-[0.65rem] text-[#0b2745] text-[0.94rem] outline-none"
+                  >
+                    <option value="" disabled>General Inquiry</option>
                     <option>General Inquiry</option>
                     <option>Car Sales</option>
                     <option>Car Detailing</option>
@@ -172,16 +248,28 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="contact-field contact-message-field">
-                <label htmlFor="contactMessage">Message</label>
-                <textarea id="contactMessage" placeholder="How can we help you today?" />
+              {/* Message */}
+              <div className="grid gap-[0.45rem]">
+                <label htmlFor="contactMessage" className="text-[#6b7d93] text-[0.68rem] font-extrabold tracking-[0.18em] uppercase">
+                  Message
+                </label>
+                <textarea
+                  id="contactMessage"
+                  placeholder="How can we help you today?"
+                  className="w-full border-0 border-b border-[rgba(6,62,102,0.14)] bg-transparent py-[0.25rem] pb-[0.65rem] text-[#0b2745] text-[0.94rem] outline-none placeholder:text-[#c9d1db] min-h-[150px] resize-y"
+                />
               </div>
 
-              <button className="contact-submit-btn" type="button">
+              {/* Submit */}
+              <button
+                className="inline-flex items-center justify-center gap-[0.65rem] w-[148px] min-h-[40px] mt-4 border-0 rounded-sm bg-[#063e66] text-white text-[0.92rem] font-bold shadow-[0_10px_22px_rgba(6,62,102,0.16)] hover:bg-[#0b567f] transition-colors cursor-pointer"
+                type="button"
+              >
                 Send Message <span aria-hidden="true">&rarr;</span>
               </button>
 
-              <p className="contact-privacy-note">
+              {/* Privacy Note */}
+              <p className="mt-[0.65rem] text-[#9aa6b5] text-[0.72rem] leading-[1.45]">
                 By clicking send, you agree to our Privacy Policy and consent to being contacted regarding your inquiry.
               </p>
             </form>
@@ -191,4 +279,3 @@ export default function ContactPage() {
     </div>
   );
 }
-
