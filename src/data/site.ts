@@ -1,4 +1,4 @@
-import type { BlogPost, Car, NavItem, Service } from '@/types/site';
+import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site';
 
 export const brand = {
   name: 'M.A Trading',
@@ -91,6 +91,119 @@ export const featuredCars: Car[] = [
       { label: 'Condition', value: 'Excellent' }
     ],
     images: ['/car3.jpg', '/car1.jpg', '/car2.jpg']
+  }
+];
+
+export const availableStock: StockVehicle[] = [
+  {
+    slug: 'toyota-corolla-2015-gli-white-islamabad',
+    make: 'Toyota Corolla',
+    model: 2015,
+    variant: 'Gli (1.3)',
+    colour: 'White',
+    registrationCity: 'Islamabad',
+    mileageKm: 111578,
+    demandPkr: 3250000,
+    demandPound: 8530
+  },
+  {
+    slug: 'toyota-corolla-2010-gli-black-lahore',
+    make: 'Toyota Corolla',
+    model: 2010,
+    variant: 'Gli (1.3)',
+    colour: 'Black',
+    registrationCity: 'Lahore',
+    mileageKm: 158767,
+    demandPkr: 2700000,
+    demandPound: 7087
+  },
+  {
+    slug: 'honda-city-2015-aspire-brown-lahore',
+    make: 'Honda City',
+    model: 2015,
+    variant: 'Aspire 1.5',
+    colour: 'Brown',
+    registrationCity: 'Lahore',
+    mileageKm: 101870,
+    demandPkr: 2950000,
+    demandPound: 7743
+  },
+  {
+    slug: 'toyota-corolla-2013-altis-white-islamabad',
+    make: 'Toyota Corolla',
+    model: 2013,
+    variant: 'Altis 1.6',
+    colour: 'White',
+    registrationCity: 'Islamabad',
+    mileageKm: 29291,
+    demandPkr: 3500000,
+    demandPound: 9186
+  },
+  {
+    slug: 'toyota-corolla-2019-gli-white-lahore',
+    make: 'Toyota Corolla',
+    model: 2019,
+    variant: 'Gli (1.3)',
+    colour: 'White',
+    registrationCity: 'Lahore',
+    mileageKm: 55759,
+    demandPkr: 4275000,
+    demandPound: 11220
+  },
+  {
+    slug: 'toyota-corolla-2012-gli-silver-lahore',
+    make: 'Toyota Corolla',
+    model: 2012,
+    variant: 'Gli (1.3)',
+    colour: 'Silver',
+    registrationCity: 'Lahore',
+    mileageKm: 134788,
+    demandPkr: 2850000,
+    demandPound: 7480
+  },
+  {
+    slug: 'honda-city-2022-cvt-white-lahore',
+    make: 'Honda City',
+    model: 2022,
+    variant: 'CVT 1.2',
+    colour: 'White',
+    registrationCity: 'Lahore',
+    mileageKm: 47898,
+    demandPkr: 4250000,
+    demandPound: 11155
+  },
+  {
+    slug: 'toyota-fortuner-2020-27-v-black-islamabad',
+    make: 'Toyota Fortuner',
+    model: 2020,
+    variant: '2.7 V',
+    colour: 'Black',
+    registrationCity: 'Islamabad',
+    mileageKm: 100100,
+    demandPkr: 13500000,
+    demandPound: 35433
+  },
+  {
+    slug: 'suzuki-alto-2022-vxr-silver-lahore',
+    make: 'Suzuki Alto',
+    model: 2022,
+    variant: 'VXR 660cc',
+    colour: 'Silver',
+    registrationCity: 'Lahore',
+    mileageKm: 100000,
+    demandPkr: 2650000,
+    demandPound: 6955
+  },
+  {
+    slug: 'honda-civic-2019-oriel-black-islamabad',
+    make: 'Honda Civic',
+    model: 2019,
+    variant: 'Oriel',
+    colour: 'Black',
+    registrationCity: 'Islamabad',
+    mileageKm: 61476,
+    demandPkr: 5250000,
+    demandPound: 13780
   }
 ];
 
