@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { CarCard } from '@/components/car-card';
 import { SectionHeading } from '@/components/section-heading';
 import AnimatedNumber from '@/components/animated-number';
-import { featuredCars } from '@/data/site';
+import { availableStock } from '@/data/site';
+import type { Car } from '@/types/site';
 
 const features = [
   { title: 'Quality Cars', icon: '01' },
@@ -40,6 +41,41 @@ const bannerPoints = [
   'Verified, inspected inventory',
   'Quick contact and test-drive booking'
 ];
+
+const homeFeaturedCars: Car[] = [
+  'toyota-corolla-2015-gli-white-islamabad',
+  'toyota-corolla-2013-altis-white-islamabad',
+  'honda-city-2022-cvt-white-lahore',
+  'toyota-fortuner-2020-27-v-black-islamabad'
+].map((slug) => {
+  const car = availableStock.find((item) => item.slug === slug);
+
+  if (!car) {
+    throw new Error(`Missing home featured stock car: ${slug}`);
+  }
+
+  const bodyType = car.slug.includes('fortuner') ? 'SUV' : 'Sedan';
+  const transmission = car.slug.includes('alto') ? 'Manual' : 'Automatic';
+
+  return {
+    slug: car.slug,
+    title: car.make,
+    year: car.model,
+    price: `PKR ${new Intl.NumberFormat('en-PK').format(car.demandPkr)}`,
+    bodyType,
+    fuelType: 'Petrol',
+    transmission,
+    mileage: `${new Intl.NumberFormat('en-PK').format(car.mileageKm)} km`,
+    description: `${car.make} ${car.model} ${car.variant} in ${car.colour}.`,
+    specs: [
+      { label: 'Variant', value: car.variant },
+      { label: 'Color', value: car.colour },
+      { label: 'Registered', value: car.registrationCity },
+      { label: 'Condition', value: 'Excellent' }
+    ],
+    images: car.images ?? ['/img1.jpg']
+  } satisfies Car;
+});
 
 export default function HomePage() {
   return (
@@ -126,7 +162,7 @@ export default function HomePage() {
         <div className="w-full px-[clamp(16px,2vw,24px)] grid justify-items-center text-center gap-[18px]">
           <SectionHeading title="FEATURED CARS" />
           <div className="grid grid-cols-4 gap-4 mt-[18px] w-full max-[1080px]:grid-cols-2 max-[720px]:grid-cols-1">
-            {featuredCars.concat(featuredCars).map((car, index) => (
+            {homeFeaturedCars.map((car, index) => (
               <CarCard key={`${car.slug}-${index}`} car={car} />
             ))}
           </div>

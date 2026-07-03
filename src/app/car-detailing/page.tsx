@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from 'next/link';
 
@@ -85,7 +85,7 @@ export default function CarDetailingPage() {
                     <tr className="bg-[#063e66] text-white">
                       <th className="w-[18%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Category</th>
                       <th className="w-[22%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price PKR</th>
-                      <th className="w-[16%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price Â£</th>
+                      <th className="w-[16%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price £</th>
                       <th className="w-[44%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Remarks</th>
                     </tr>
                   </thead>
@@ -140,4 +140,5 @@ export default function CarDetailingPage() {
     </div>
   );
 }
+
 

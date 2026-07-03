@@ -28,6 +28,7 @@ export type StockVehicle = {
   mileageKm: number;
   demandPkr: number;
   demandPound: number;
+  images?: string[];
 };
 
 export type Service = {
