@@ -1,6 +1,42 @@
-"use client";
+﻿"use client";
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+
+type BookingRow = {
+  category: string;
+  pkr: string;
+  gbp: string;
+  remarks: string;
+};
+
+type BookingService = {
+  title: string;
+  helper: string;
+  rows: BookingRow[];
+};
+
+const bookingServices: BookingService[] = [
+  {
+    title: 'Detailings (Cleaning)',
+    helper: 'Professional cleaning based on your vehicle category.',
+    rows: [
+      { category: 'Sedans', pkr: '6000-8000', gbp: '16-21', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '8000-12000', gbp: '21-31', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '14000-18000', gbp: '37-47', remarks: 'Free service for vehicles purchased by MA Trading' }
+    ]
+  },
+  {
+    title: 'Documents Inspection',
+    helper: 'Document inspection pricing for the same category types.',
+    rows: [
+      { category: 'Sedans', pkr: '8000-10000', gbp: '21-27', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '10000-15000', gbp: '27-40', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '15000-20000', gbp: '40-53', remarks: 'Free service for vehicles purchased by MA Trading' }
+    ]
+  }
+];
 
 const trustItems = [
   { title: 'Precision Work', description: 'Every inch meticulously examined.', icon: 'car' },
@@ -13,30 +49,41 @@ const promiseItems = ['Certified Technicians', '100% Satisfaction Guarantee', 'E
 
 export default function DetailingBookingPage() {
   const [selectedService, setSelectedService] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
 
+  const activeService = useMemo(
+    () => bookingServices.find((service) => service.title === selectedService) || null,
+    [selectedService]
+  );
+
+  const categoryOptions = activeService?.rows ?? [];
+  const selectedCategoryData = useMemo(
+    () => categoryOptions.find((row) => row.category === selectedCategory) || null,
+    [categoryOptions, selectedCategory]
+  );
+
   return (
     <div className="bg-[#f4f7fc] pt-[2.2rem] pb-16">
-      {/* Hero */}
       <section className="w-full px-[clamp(16px,2vw,24px)] w-[min(100%,1040px)] mx-auto mb-8">
-        <h1 className="m-0 text-[#063e66] text-[clamp(2rem,3vw,2.85rem)] leading-none font-extrabold tracking-[-0.05em]">
+        <div className="inline-flex items-center rounded-full bg-white/80 px-4 py-2 text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-[#063e66] shadow-[0_10px_22px_rgba(8,20,40,0.06)]">
+          Book Detailing Service
+        </div>
+        <h1 className="m-0 mt-4 text-[#063e66] text-[clamp(2rem,3vw,2.85rem)] leading-none font-extrabold tracking-[-0.05em]">
           BOOK YOUR
           <br />
-          <span className="text-brand-2">PRECISION CARE</span>
+          <span className="text-brand-2">SERVICE SLOT</span>
         </h1>
         <p className="max-w-[590px] mt-3 mb-0 text-[#52647a] text-[0.95rem] leading-[1.75]">
-          Restore your vehicle&apos;s showroom luster with our meticulous detailing services. Every session is an exercise in automotive perfection.
+          Choose from the same detailing services and categories shown on the pricing page, then pick a date and time that suits you.
         </p>
       </section>
 
-      {/* Booking layout */}
       <section className="w-full px-[clamp(16px,2vw,24px)] flex justify-center">
         <div className="grid grid-cols-[minmax(0,720px)_minmax(280px,330px)] gap-[2.6rem] w-[min(100%,1040px)] items-start max-[980px]:grid-cols-1">
-          {/* Form card */}
           <div className="bg-white border border-[rgba(6,62,102,0.06)] shadow-[0_18px_42px_rgba(8,20,40,0.045)] p-[2.75rem] max-[640px]:p-[1.4rem]">
             <form className="grid gap-8">
-              {/* Section 1 */}
               <div className="grid gap-5 pb-[1.95rem] border-b border-[rgba(6,62,102,0.07)]">
                 <div className="flex items-center gap-[0.65rem] text-[#063e66]">
                   <span className="inline-grid w-[26px] h-6 place-items-center rounded-[2px] bg-[#eaf3fd] text-[#063e66] text-[0.72rem] font-extrabold">01</span>
@@ -58,27 +105,65 @@ export default function DetailingBookingPage() {
                 </div>
               </div>
 
-              {/* Section 2 */}
               <div className="grid gap-5 pb-[1.95rem] border-b border-[rgba(6,62,102,0.07)]">
                 <div className="flex items-center gap-[0.65rem] text-[#063e66]">
                   <span className="inline-grid w-[26px] h-6 place-items-center rounded-[2px] bg-[#eaf3fd] text-[#063e66] text-[0.72rem] font-extrabold">02</span>
-                  <strong className="text-[0.88rem] font-[650]">Service Excellence</strong>
+                  <strong className="text-[0.88rem] font-[650]">Service Selection</strong>
                 </div>
                 <div className="grid gap-[0.45rem]">
-                  <label htmlFor="service" className="text-[#0c2440] text-[0.78rem] font-bold tracking-[0.04em]">Select Detailing Package</label>
-                  <select id="service" value={selectedService} onChange={(e) => setSelectedService(e.target.value)} className="w-full border border-[#cbd6e4] rounded-none bg-[#edf3fb] text-[#102a43] py-[0.85rem] px-[0.9rem] outline-none text-[0.9rem] min-h-12 transition-[border-color,box-shadow] focus:border-[#063e66] focus:shadow-[0_0_0_3px_rgba(6,62,102,0.1)]">
-                    <option value="" disabled>Choose a package...</option>
-                    <option>Exterior Detailing</option>
-                    <option>Interior Detailing</option>
-                    <option>Paint Protection</option>
-                    <option>Ceramic Coating</option>
-                    <option>Deep Cleaning</option>
-                    <option>Engine Bay Cleaning</option>
+                  <label htmlFor="service" className="text-[#0c2440] text-[0.78rem] font-bold tracking-[0.04em]">Select Service</label>
+                  <select
+                    id="service"
+                    value={selectedService}
+                    onChange={(e) => {
+                      setSelectedService(e.target.value);
+                      setSelectedCategory('');
+                    }}
+                    className="w-full border border-[#cbd6e4] rounded-none bg-[#edf3fb] text-[#102a43] py-[0.85rem] px-[0.9rem] outline-none text-[0.9rem] min-h-12 transition-[border-color,box-shadow] focus:border-[#063e66] focus:shadow-[0_0_0_3px_rgba(6,62,102,0.1)]"
+                  >
+                    <option value="" disabled>Choose a service...</option>
+                    {bookingServices.map((service) => (
+                      <option key={service.title} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
+                  {activeService ? <p className="m-0 text-[0.8rem] text-[#5d6b7d]">{activeService.helper}</p> : null}
+                </div>
+                <div className="grid gap-[0.45rem]">
+                  <label htmlFor="category" className="text-[#0c2440] text-[0.78rem] font-bold tracking-[0.04em]">Select Category</label>
+                  <select
+                    id="category"
+                    value={selectedCategory}
+                    onChange={(e) => setSelectedCategory(e.target.value)}
+                    disabled={!activeService}
+                    className="w-full border border-[#cbd6e4] rounded-none bg-[#edf3fb] text-[#102a43] py-[0.85rem] px-[0.9rem] outline-none text-[0.9rem] min-h-12 transition-[border-color,box-shadow] focus:border-[#063e66] focus:shadow-[0_0_0_3px_rgba(6,62,102,0.1)] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    <option value="" disabled>
+                      {activeService ? 'Choose a category...' : 'Select service first...'}
+                    </option>
+                    {categoryOptions.map((row) => (
+                      <option key={row.category} value={row.category}>
+                        {row.category}
+                      </option>
+                    ))}
                   </select>
                 </div>
+                {selectedCategoryData ? (
+                  <div className="grid gap-2 rounded-[14px] border border-[rgba(6,62,102,0.08)] bg-[#f7fbfe] px-4 py-4">
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-[#5d6b7d]">Estimated Price</span>
+                      <strong className="text-[#063e66] text-[0.98rem]">PKR {selectedCategoryData.pkr}</strong>
+                    </div>
+                    <div className="flex items-center justify-between gap-4">
+                      <span className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-[#5d6b7d]">GBP Range</span>
+                      <strong className="text-[#063e66] text-[0.98rem]">£{selectedCategoryData.gbp}</strong>
+                    </div>
+                    <p className="m-0 text-[0.8rem] text-[#5d6b7d] leading-[1.55]">{selectedCategoryData.remarks}</p>
+                  </div>
+                ) : null}
               </div>
 
-              {/* Section 3 */}
               <div className="grid gap-5">
                 <div className="flex items-center gap-[0.65rem] text-[#063e66]">
                   <span className="inline-grid w-[26px] h-6 place-items-center rounded-[2px] bg-[#eaf3fd] text-[#063e66] text-[0.72rem] font-extrabold">03</span>
@@ -102,16 +187,15 @@ export default function DetailingBookingPage() {
             </form>
           </div>
 
-          {/* Sidebar */}
           <aside className="grid gap-[1.6rem]">
-            {/* Summary card */}
             <div className="bg-[#063e66] text-white px-[1.75rem] py-8 shadow-[0_20px_44px_rgba(6,62,102,0.18)]">
               <h2 className="m-0 mb-5 pb-4 border-b border-[rgba(255,255,255,0.12)] text-white text-base font-[750]">Appointment Summary</h2>
               <div className="grid gap-5 pb-[1.35rem] border-b border-[rgba(255,255,255,0.12)]">
                 {[
                   { label: 'Service', value: selectedService || 'Not selected' },
+                  { label: 'Category', value: selectedCategory || 'Not selected' },
                   { label: 'Date', value: selectedDate || 'Not selected' },
-                  { label: 'Time', value: selectedTime || 'Not selected' },
+                  { label: 'Time', value: selectedTime || 'Not selected' }
                 ].map(({ label, value }) => (
                   <div key={label} className="flex items-center justify-between gap-4 text-[rgba(255,255,255,0.78)] text-[0.92rem]">
                     <span className="text-[rgba(255,255,255,0.9)] font-[650]">{label}</span>
@@ -121,7 +205,6 @@ export default function DetailingBookingPage() {
               </div>
             </div>
 
-            {/* Promise list */}
             <div className="grid gap-[1.05rem] py-[0.65rem] px-[0.2rem]">
               {promiseItems.map((item) => (
                 <div key={item} className="premium-promise-item flex items-center gap-3 text-[#063e66] text-[0.9rem] font-extrabold">
@@ -134,7 +217,6 @@ export default function DetailingBookingPage() {
         </div>
       </section>
 
-      {/* Trust row */}
       <section className="w-full px-[clamp(16px,2vw,24px)] grid grid-cols-4 gap-8 w-[min(100%,1040px)] mx-auto mt-[5.5rem] text-center max-[980px]:grid-cols-2 max-[980px]:mt-14 max-[640px]:grid-cols-1" aria-label="Detailing benefits">
         {trustItems.map((item) => (
           <div key={item.title} className="grid justify-items-center gap-2 text-[#8a95a3]">

@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── CSS Custom Properties ─────────────────────────────────────────── */
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -22,7 +21,7 @@
   --page-gutter-header: clamp(28px, 4vw, 56px);
 }
 
-/* ─── Base Resets ───────────────────────────────────────────────────── */
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Base Resets Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 * {
   box-sizing: border-box;
 }
@@ -55,7 +54,7 @@ textarea {
   font: inherit;
 }
 
-/* ─── Gradient text utility ─────────────────────────────────────────── */
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Gradient text utility Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 .hero-title-accent {
   display: inline-block;
   background: linear-gradient(135deg, var(--brand), var(--brand-2));
@@ -64,7 +63,7 @@ textarea {
   color: transparent;
 }
 
-/* ─── Pseudo-element icon shapes (cannot be expressed in Tailwind) ───── */
+/* Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ Pseudo-element icon shapes (cannot be expressed in Tailwind) Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬ */
 
 /* Gallery nav arrow chevrons */
 .gallery-arrow::before {
@@ -189,7 +188,7 @@ textarea {
   }
 }
 /* Detail feature item check dot */
-.detail-feature-item span::before {
+.detail-feature-item > span:first-child::before {
   content: '';
   position: absolute;
   inset: 7px;
@@ -296,7 +295,7 @@ textarea {
   transform: rotate(38deg);
 }
 
-/* Detailing service icon pseudo shapes (hidden — SVGs used instead) */
+/* Detailing service icon pseudo shapes (hidden Ã¢â‚¬â€ SVGs used instead) */
 .detailing-service-icon::before,
 .detailing-service-icon::after {
   border-color: currentColor;
@@ -346,3 +345,4 @@ textarea {
 .promo-card:hover .promo-content {
   transform: translateY(-2px);
 }
+

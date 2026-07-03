@@ -18,6 +18,18 @@ export type Car = {
   images: string[];
 };
 
+export type StockVehicle = {
+  slug: string;
+  make: string;
+  model: number;
+  variant: string;
+  colour: string;
+  registrationCity: string;
+  mileageKm: number;
+  demandPkr: number;
+  demandPound: number;
+};
+
 export type Service = {
   slug: string;
   title: string;
