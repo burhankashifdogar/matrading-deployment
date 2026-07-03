@@ -67,7 +67,7 @@ function getDetailItem(slug: string): DetailItem | null {
       transmission: 'N/A',
       fuelType: 'N/A',
       mileage: `${formatNumber(stock.mileageKm)} km`,
-      description: 'This vehicle is listed from the current Excel stock sheet and is shown with the exact inventory details provided by the client.',
+      description: 'This vehicle is part of our available inventory and is presented with the key details you need to review quickly.',
       specs: [
         { label: 'Make', value: stock.make },
         { label: 'Model', value: String(stock.model) },
