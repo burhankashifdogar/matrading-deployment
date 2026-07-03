@@ -1,14 +1,13 @@
-import Image from 'next/image';
+﻿import Image from 'next/image';
 import Link from 'next/link';
 
-import { brand, navigation, services } from '@/data/site';
-import { formatPhoneForWhatsApp } from '@/lib/utils';
+import { brand, navigation } from '@/data/site';
 
 export function SiteFooter() {
   return (
     <footer className="w-full mt-8 pt-6 pb-5 border-t border-[rgba(13,27,42,0.1)] bg-white">
       <div className="w-full px-[clamp(16px,2vw,24px)]">
-        <div className="grid gap-4 grid-cols-[1.2fr_0.9fr_0.9fr_1fr] max-[1080px]:grid-cols-1">
+        <div className="grid gap-4 grid-cols-[1.2fr_0.9fr_0.9fr] max-[1080px]:grid-cols-1">
           <div>
             <div className="flex items-center gap-4 mb-3">
               <Image src="/logo.jpeg" alt={brand.name} width={110} height={35} className="w-auto h-[58px] object-contain" />
@@ -35,22 +34,12 @@ export function SiteFooter() {
           <div>
             <h3 className="font-bold mb-3">Our Services</h3>
             <div className="grid gap-4">
-              {services.map((service) => (
-                <Link key={service.slug} href={`/car-detailing#${service.slug}`} className="text-muted hover:text-brand transition-colors">
-                  {service.title}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="font-bold mb-3">Contact</h3>
-            <div className="grid gap-4">
-              <a href={`tel:${brand.phone.replace(/\s/g, '')}`} className="text-muted hover:text-brand transition-colors">{brand.phone}</a>
-              <a href={`mailto:${brand.email}`} className="text-muted hover:text-brand transition-colors">{brand.email}</a>
-              <a href={formatPhoneForWhatsApp(brand.whatsapp)} target="_blank" rel="noreferrer" className="text-muted hover:text-brand transition-colors">
-                WhatsApp
-              </a>
+              <Link href="/car-detailing#cleaning" className="text-muted hover:text-brand transition-colors">
+                Cleaning
+              </Link>
+              <Link href="/car-detailing#documents-inspection" className="text-muted hover:text-brand transition-colors">
+                Documents Inspection
+              </Link>
             </div>
           </div>
         </div>
@@ -65,3 +54,5 @@ export function SiteFooter() {
     </footer>
   );
 }
+
+

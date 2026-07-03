@@ -1,10 +1,10 @@
-import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site';
+﻿import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site';
 
 export const brand = {
   name: 'M.A Trading',
   domain: 'matrading.pk',
-  phone: '+92 312 999999',
-  whatsapp: '+92312999999',
+  phone: '+92 333 3113195',
+  whatsapp: '+923333113195',
   email: 'info@matrading.pk',
   address: '123 Main Boulevard, Lahore, Pakistan'
 };
@@ -14,6 +14,7 @@ export const navigation: NavItem[] = [
   { label: 'Car Sales', href: '/car-sales' },
   { label: 'Car Detailing', href: '/car-detailing' },
   { label: 'About', href: '/about' },
+  { label: 'Our Team', href: '/our-team' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact Us', href: '/contact' }
 ];
