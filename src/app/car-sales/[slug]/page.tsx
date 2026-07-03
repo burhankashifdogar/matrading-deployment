@@ -26,8 +26,7 @@ type DetailItem = {
   type: 'featured' | 'stock';
 };
 
-const thumbnailImages = ['/int-1.jpg', '/int-2.jpg', '/int-3.jpg', '/int-4.jpg', '/int-5.jpg', '/int-6.jpg'];
-const stockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
+const defaultStockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
 const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(value);
 
 function getDetailItem(slug: string): DetailItem | null {
@@ -61,7 +60,7 @@ function getDetailItem(slug: string): DetailItem | null {
     return {
       slug: stock.slug,
       title: stock.make,
-      images: stockImages,
+      images: stock.images ?? defaultStockImages,
       price: `PKR ${formatNumber(stock.demandPkr)} | GBP ${formatNumber(stock.demandPound)}`,
       year: stock.model,
       transmission: 'N/A',
@@ -124,7 +123,7 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
       </nav>
 
       <section className="w-full px-[clamp(16px,2vw,24px)] grid items-start grid-cols-[minmax(0,790px)_minmax(340px,385px)] justify-center gap-[1.55rem] max-[1080px]:grid-cols-1 max-[1080px]:justify-stretch">
-        <CarGallery mainImage={detail.images[0] ?? '/img1.jpg'} thumbnailImages={thumbnailImages} title={detail.title} />
+        <CarGallery mainImage={detail.images[0] ?? '/img1.jpg'} thumbnailImages={detail.images.slice(1)} title={detail.title} />
 
         <aside className="grid gap-7 rounded-[8px] bg-white shadow-detail min-h-[590px] p-8 max-[1080px]:p-[1.65rem] max-[1080px]:min-h-auto">
           <div className="grid gap-3 pb-5 border-b border-[rgba(10,58,104,0.07)]">

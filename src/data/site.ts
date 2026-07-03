@@ -1,4 +1,4 @@
-﻿import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site';
+import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site';
 
 export const brand = {
   name: 'M.A Trading',
@@ -105,7 +105,12 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 111578,
     demandPkr: 3250000,
-    demandPound: 8530
+    demandPound: 8530,
+    images: [
+      '/inventory/Toyota%20Corolla-%20White%202015%20front.jpeg',
+      '/inventory/Toyota%20Corolla-%20White%202015%202.jpeg',
+      '/inventory/Toyota%20Corolla-%20White%202015%203.jpeg'
+    ]
   },
   {
     slug: 'toyota-corolla-2010-gli-black-lahore',
@@ -116,9 +121,18 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 158767,
     demandPkr: 2700000,
-    demandPound: 7087
+    demandPound: 7087,
+    images: [
+      '/inventory/Toyota%20Corolla-black%20front.JPG',
+      '/inventory/Toyota%20Corolla-black%202.jpeg',
+      '/inventory/Toyota%20Corolla-black%203.jpeg',
+      '/inventory/Toyota%20Corolla-black%204.jpeg',
+      '/inventory/Toyota%20Corolla-black%205.jpeg',
+      '/inventory/Toyota%20Corolla-black%206.jpeg',
+      '/inventory/Toyota%20Corolla-black%207.JPG'
+    ]
   },
-  {
+    {
     slug: 'honda-city-2015-aspire-brown-lahore',
     make: 'Honda City',
     model: 2015,
@@ -127,9 +141,13 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 101870,
     demandPkr: 2950000,
-    demandPound: 7743
+    demandPound: 7743,
+    images: [
+      '/inventory/Honda%20city%20altas.jpg',
+      '/inventory/Honda%20city%20altas%20interior.jpeg'
+    ]
   },
-  {
+    {
     slug: 'toyota-corolla-2013-altis-white-islamabad',
     make: 'Toyota Corolla',
     model: 2013,
@@ -138,9 +156,15 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 29291,
     demandPkr: 3500000,
-    demandPound: 9186
+    demandPound: 9186,
+    images: [
+      '/inventory/Toyota%20Corolla-%20White%202013%20Front.JPG',
+      '/inventory/Toyota%20Corolla-%20White%202013%203.jpeg',
+      '/inventory/Toyota%20Corolla-%20White%202013%204.jpeg',
+      '/inventory/Toyota%20Corolla-%20White%202013%205.jpeg'
+    ]
   },
-  {
+    {
     slug: 'toyota-corolla-2019-gli-white-lahore',
     make: 'Toyota Corolla',
     model: 2019,
@@ -149,9 +173,13 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 55759,
     demandPkr: 4275000,
-    demandPound: 11220
+    demandPound: 11220,
+    images: [
+      '/inventory/Toyota%20corolla%202019%20Front.jpg',
+      '/inventory/Toyota%20corolla%202019%202.jpg'
+    ]
   },
-  {
+    {
     slug: 'toyota-corolla-2012-gli-silver-lahore',
     make: 'Toyota Corolla',
     model: 2012,
@@ -160,9 +188,18 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 134788,
     demandPkr: 2850000,
-    demandPound: 7480
+    demandPound: 7480,
+    images: [
+      '/inventory/Toyota%20Corolla%20silver%20front.JPG',
+      '/inventory/Toyota%20Corolla%20silver%202.jpeg',
+      '/inventory/Toyota%20Corolla%20silver%203.jpeg',
+      '/inventory/Toyota%20Corolla%20silver%204.jpeg',
+      '/inventory/Toyota%20Corolla%20silver%205.jpeg',
+      '/inventory/Toyota%20Corolla%20silver%206.jpeg',
+      '/inventory/Toyota%20Corolla%20silver%207.JPG'
+    ]
   },
-  {
+    {
     slug: 'honda-city-2022-cvt-white-lahore',
     make: 'Honda City',
     model: 2022,
@@ -171,9 +208,13 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 47898,
     demandPkr: 4250000,
-    demandPound: 11155
+    demandPound: 11155,
+    images: [
+      '/inventory/Honda%20city%202022%20front.jpeg',
+      '/inventory/Honda%20city%202022%202.jpeg'
+    ]
   },
-  {
+    {
     slug: 'toyota-fortuner-2020-27-v-black-islamabad',
     make: 'Toyota Fortuner',
     model: 2020,
@@ -182,9 +223,13 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 100100,
     demandPkr: 13500000,
-    demandPound: 35433
+    demandPound: 35433,
+    images: [
+      '/inventory/Toyota%20fortuner%202.7%20front.jpeg',
+      '/inventory/Toyota%20fortuner%202.7%20interior.jpeg'
+    ]
   },
-  {
+    {
     slug: 'suzuki-alto-2022-vxr-silver-lahore',
     make: 'Suzuki Alto',
     model: 2022,
@@ -193,9 +238,13 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 100000,
     demandPkr: 2650000,
-    demandPound: 6955
+    demandPound: 6955,
+    images: [
+      '/inventory/suzuki%20alto%202022.jpeg',
+      '/inventory/suzuki%20alto%202022%202.jpeg'
+    ]
   },
-  {
+    {
     slug: 'honda-civic-2019-oriel-black-islamabad',
     make: 'Honda Civic',
     model: 2019,
@@ -204,7 +253,11 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 61476,
     demandPkr: 5250000,
-    demandPound: 13780
+    demandPound: 13780,
+    images: [
+      '/inventory/honda%20civic%20oriel.jpeg',
+      '/inventory/honda%20civic%20oriel%20interior.jpeg'
+    ]
   }
 ];
 

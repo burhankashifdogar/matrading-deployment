@@ -35,7 +35,7 @@ export function SiteFooter() {
             <h3 className="font-bold mb-3">Our Services</h3>
             <div className="grid gap-4">
               <Link href="/car-detailing#cleaning" className="text-muted hover:text-brand transition-colors">
-                Cleaning
+                Detailings (Cleaning)
               </Link>
               <Link href="/car-detailing#documents-inspection" className="text-muted hover:text-brand transition-colors">
                 Documents Inspection
@@ -54,5 +54,6 @@ export function SiteFooter() {
     </footer>
   );
 }
+
 
 

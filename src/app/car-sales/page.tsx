@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { availableStock } from '@/data/site';
 
 const CARS_PER_PAGE = 4;
-const stockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
+const defaultStockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
 const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(value);
 const uniqueSorted = (values: string[]) => Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
 
@@ -224,7 +224,7 @@ export default function CarSalesPage() {
           <div className="cars-list grid gap-[1.35rem]">
             {paginatedStock.length > 0 ? (
               paginatedStock.map((item, index) => {
-                const image = stockImages[index % stockImages.length];
+                const image = item.images?.[0] ?? defaultStockImages[index % defaultStockImages.length];
 
                 return (
                   <div key={item.slug} className="grid grid-cols-[minmax(230px,290px)_minmax(0,1fr)] border border-[rgba(9,39,70,0.06)] rounded-[2px] bg-white shadow-[0_14px_34px_rgba(10,31,58,0.08)] overflow-hidden transition-[transform,box-shadow] duration-[180ms] hover:-translate-y-[3px] hover:shadow-[0_20px_44px_rgba(10,31,58,0.12)] max-[980px]:grid-cols-[220px_minmax(0,1fr)] max-[720px]:grid-cols-1">
