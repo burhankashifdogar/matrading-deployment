@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { WhatsAppFloat } from '@/components/whatsapp-float';
 import '@/app/globals.css';
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <div className="w-full">
           <SiteHeader />
           <main>{children}</main>
+          <WhatsAppFloat />
           <SiteFooter />
         </div>
       </body>
