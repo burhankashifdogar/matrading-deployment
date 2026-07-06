@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,7 +6,10 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { brand, navigation } from '@/data/site';
-import { cn, formatPhoneForWhatsApp } from '@/lib/utils';
+import { cn, formatWhatsAppMessageLink } from '@/lib/utils';
+
+const whatsappMessage = 'Hi, I would like to enquire about your services.';
+const whatsappCallHref = formatWhatsAppMessageLink(brand.whatsapp, whatsappMessage);
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -24,7 +27,7 @@ export function SiteHeader() {
             <Image src="/logo.jpeg" alt={brand.name} width={128} height={42} className="w-auto h-10 lg:h-11 object-contain" priority />
           </Link>
 
-          <nav className="hidden lg:flex flex-wrap items-center gap-2 lg:gap-2.5 xl:gap-3.5" aria-label="Primary">
+          <nav className="hidden min-[1361px]:flex flex-wrap items-center gap-2 lg:gap-2.5 xl:gap-3.5" aria-label="Primary">
             {navigation.map((item) => (
               <Link
                 key={item.href}
@@ -42,10 +45,10 @@ export function SiteHeader() {
             ))}
           </nav>
 
-          <div className="hidden lg:flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 flex-shrink-0">
+          <div className="hidden min-[1361px]:flex items-center gap-2 lg:gap-2.5 xl:gap-3.5 flex-shrink-0">
             <a
               className="inline-flex items-center justify-center gap-2 rounded-[12px] px-3.5 lg:px-4 xl:px-3 py-2 lg:py-2.5 xl:py-[0.5rem] border border-[rgba(10,58,104,0.18)] bg-white text-brand font-bold text-[0.82rem] lg:text-[0.86rem] xl:text-[0.92rem] transition hover:-translate-y-px no-underline"
-              href={formatPhoneForWhatsApp(brand.whatsapp)}
+              href={whatsappCallHref}
               target="_blank"
               rel="noreferrer"
               aria-label={`Chat with ${brand.name} on WhatsApp`}
@@ -63,7 +66,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            className="lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-[12px] border border-[rgba(10,58,104,0.14)] bg-white text-brand"
+            className="inline-flex min-[1361px]:hidden items-center justify-center w-11 h-11 rounded-[12px] border border-[rgba(10,58,104,0.14)] bg-white text-brand"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
@@ -80,7 +83,7 @@ export function SiteHeader() {
         {menuOpen ? (
           <div
             id="mobile-menu"
-            className="lg:hidden border-t border-[rgba(13,27,42,0.08)] py-4 pb-5"
+            className="min-[1361px]:hidden border-t border-[rgba(13,27,42,0.08)] py-4 pb-5"
           >
             <nav className="grid gap-2" aria-label="Mobile primary">
               {navigation.map((item) => (
@@ -103,7 +106,7 @@ export function SiteHeader() {
             <div className="grid gap-3 mt-4">
               <a
                 className="inline-flex items-center justify-center rounded-[12px] px-4 py-3 border border-[rgba(10,58,104,0.18)] bg-white text-brand font-bold text-[0.92rem] no-underline"
-                href={formatPhoneForWhatsApp(brand.whatsapp)}
+                href={whatsappCallHref}
                 target="_blank"
                 rel="noreferrer"
               >
