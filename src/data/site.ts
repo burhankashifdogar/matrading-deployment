@@ -13,6 +13,7 @@ export const navigation: NavItem[] = [
   { label: 'Home', href: '/' },
   { label: 'Car Sales', href: '/car-sales' },
   { label: 'Car Detailing', href: '/car-detailing' },
+  { label: 'Inspection', href: '/inspection' },
   { label: 'About', href: '/about' },
   { label: 'Our Team', href: '/our-team' },
   { label: 'Blog', href: '/blog' },

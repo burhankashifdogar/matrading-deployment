@@ -5,21 +5,6 @@ const contactItems = [
     title: 'Phone',
     lines: [brand.phone, 'Concierge line available 24/7'],
     icon: 'phone'
-  },
-  {
-    title: 'Email',
-    lines: [brand.email, 'Typical response time: 2 hours'],
-    icon: 'email'
-  },
-  {
-    title: 'Studio Address',
-    lines: [brand.address, 'Precision Park, Lahore'],
-    icon: 'location'
-  },
-  {
-    title: 'Working Hours',
-    lines: ['Mon - Fri: 08:00 - 19:00', 'Sunday: By Appointment'],
-    icon: 'clock'
   }
 ];
 
@@ -98,9 +83,9 @@ function ContactIcon({ name }: { name: string }) {
 export default function ContactPage() {
   return (
     <div className="bg-[#f5f7fc] py-8 pb-16">
-<section className="w-full max-w-[1440px] mx-auto px-[clamp(20px,5vw,64px)] grid grid-cols-[1.1fr_1fr] gap-[clamp(1.5rem,4vw,3rem)] items-start max-[980px]:grid-cols-1">
+      <section className="w-full px-[clamp(20px,5vw,64px)] grid grid-cols-[1.1fr_1fr] gap-[clamp(1.5rem,4vw,3rem)] items-start max-[980px]:grid-cols-1">
         {/* Left: Intro Panel */}
-        <div className="grid gap-[1.2rem] pt-4">
+        <div className="grid gap-[1.2rem] pt-4 justify-items-start">
           {/* Eyebrow */}
           <span className="text-[#1fa7b8] text-[0.76rem] font-extrabold tracking-[0.22em] uppercase">
             Get in touch
@@ -117,7 +102,7 @@ export default function ContactPage() {
           </p>
 
           {/* Contact Details */}
-          <div className="grid gap-4 mt-[0.8rem]">
+          <div className="grid gap-4 mt-[0.8rem] w-full max-w-[480px]">
             {contactItems.map((item) => (
               <div className="grid grid-cols-[48px_minmax(0,1fr)] gap-[0.9rem] items-start" key={item.title}>
                 {/* Icon */}
@@ -138,21 +123,6 @@ export default function ContactPage() {
                       {item.lines[0]}
                     </a>
                   )}
-                  {item.title === 'Email' && (
-                    <a href={`mailto:${brand.email}`} className="block text-[#0d2d52] font-bold text-[0.9rem] leading-[1.45]">
-                      {item.lines[0]}
-                    </a>
-                  )}
-                  {item.title === 'Studio Address' && (
-                    <p className="block text-[#6b7d93] text-[0.9rem] leading-[1.45] m-0">
-                      {item.lines[0]}
-                    </p>
-                  )}
-                  {item.title === 'Working Hours' && (
-                    <p className="block text-[#6b7d93] text-[0.9rem] leading-[1.45] m-0">
-                      {item.lines[0]}
-                    </p>
-                  )}
                   <span className="block text-[#6b7d93] text-[0.9rem] leading-[1.45]">
                     {item.lines[1]}
                   </span>
@@ -161,29 +131,13 @@ export default function ContactPage() {
             ))}
           </div>
 
-          {/* Social Block */}
-          <div className="mt-[0.8rem] pt-[1.2rem] border-t border-[rgba(6,62,102,0.08)]">
-            <span className="block mb-[0.75rem] text-[#6b7d93] text-[0.72rem] font-extrabold tracking-[0.18em] uppercase">
-              Connect with us
-            </span>
-            <div className="flex gap-[0.7rem]">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="inline-grid w-[34px] h-[34px] place-items-center border border-[rgba(6,62,102,0.18)] rounded bg-white text-[#0b2745] hover:text-[#063e66] transition-colors"
-                  aria-label={link.label}
-                >
-                  <ContactIcon name={link.icon} />
-                </a>
-              ))}
-            </div>
-          </div>
+    
         </div>
 
         {/* Right: Form Panel */}
-<div className="w-full">
-<div className="w-full mt-[4.2rem] bg-white rounded-sm shadow-[0_18px_42px_rgba(8,20,40,0.04)] p-[2rem_2rem_1.6rem]">            <h2 className="m-0 text-[#0b2745] text-[clamp(1.75rem,2.5vw,2.15rem)] leading-[1.05] tracking-[-0.04em]">
+        <div className="w-full">
+          <div className="w-full mt-[4.2rem] bg-white rounded-sm shadow-[0_18px_42px_rgba(8,20,40,0.04)] p-[2rem_2rem_1.6rem]">
+            <h2 className="m-0 text-[#0b2745] text-[clamp(1.75rem,2.5vw,2.15rem)] leading-[1.05] tracking-[-0.04em]">
               Send us a Message
             </h2>
             <p className="mt-[0.7rem] mb-[1.6rem] text-[#6b7d93] text-[0.95rem] leading-[1.6]">
@@ -242,6 +196,7 @@ export default function ContactPage() {
                     <option>Car Sales</option>
                     <option>Car Detailing</option>
                     <option>Book Appointment</option>
+                    <option>Car Inspection</option>
                   </select>
                 </div>
               </div>
