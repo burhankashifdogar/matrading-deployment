@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from 'next/link';
 
@@ -45,42 +45,48 @@ export default function CarDetailingPage() {
   return (
     <div className="bg-white">
       <section className="detailing-hero-band text-white py-[2.8rem] text-center">
-        <div className="w-full px-[clamp(16px,2vw,24px)] relative z-[1] grid gap-[0.7rem] justify-items-center">
-          <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-white/85 backdrop-blur-sm">
+        <div className="w-full px-[clamp(16px,2vw,24px)] relative z-[1] grid gap-[0.7rem] justify-items-center max-[640px]:px-4 max-[640px]:gap-[0.55rem]">
+          <span className="inline-flex items-center rounded-full border border-white/20 bg-white/10 px-4 py-1 text-[0.76rem] font-semibold uppercase tracking-[0.18em] text-white/85 backdrop-blur-sm max-[640px]:text-[0.7rem] max-[640px]:tracking-[0.14em] max-[640px]:px-3 max-[640px]:py-[0.35rem]">
             Detailing Price List
           </span>
-          <h1 className="m-0 text-white text-[clamp(1.7rem,2.5vw,2.45rem)] font-bold tracking-[-0.03em]">Our Detailing Services</h1>
-          <p className="m-0 max-w-[62ch] text-[rgba(255,255,255,0.82)] text-[0.98rem] leading-[1.6]">
+          <h1 className="m-0 text-white text-[clamp(1.7rem,2.5vw,2.45rem)] font-bold tracking-[-0.03em] max-[640px]:text-[clamp(1.55rem,8vw,2.1rem)]">
+            Our Detailing Services
+          </h1>
+          <p className="m-0 max-w-[62ch] text-[rgba(255,255,255,0.82)] text-[0.98rem] leading-[1.6] max-[640px]:text-[0.9rem] max-[640px]:leading-[1.65]">
             Category-based pricing for cleaning and documents inspection, presented in a clean and easy-to-scan layout.
           </p>
         </div>
       </section>
 
-      <section className="w-full px-[clamp(16px,2vw,24px)] pt-[3.6rem] pb-[3.8rem]">
-        <div className="grid grid-cols-2 gap-8 mx-auto max-w-[1180px] max-[980px]:grid-cols-1">
+      <section className="w-full px-[clamp(16px,2vw,24px)] pt-[3.6rem] pb-[3.8rem] max-[640px]:px-4 max-[640px]:pt-6 max-[640px]:pb-10">
+        <div className="grid grid-cols-2 gap-8 mx-auto max-w-[1180px] max-[980px]:grid-cols-1 max-[980px]:gap-6">
           {detailingServices.map((service) => (
             <article
               key={service.title}
               className="group overflow-hidden rounded-[18px] border border-[rgba(10,58,104,0.09)] bg-white shadow-[0_16px_38px_rgba(8,20,40,0.09)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(8,20,40,0.16)]"
             >
-              <div className="relative overflow-hidden px-[1.5rem] py-[1.45rem] border-b border-[rgba(10,58,104,0.08)] bg-[linear-gradient(135deg,#f8fbfe_0%,#eef6fd_100%)]">
+              <div className="relative overflow-hidden px-[1.5rem] py-[1.45rem] border-b border-[rgba(10,58,104,0.08)] bg-[linear-gradient(135deg,#f8fbfe_0%,#eef6fd_100%)] max-[640px]:px-4 max-[640px]:py-4">
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-[linear-gradient(90deg,transparent,rgba(6,62,102,0.35),transparent)] opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <div className="flex items-start justify-between gap-4 max-[560px]:flex-col max-[560px]:items-start">
                   <div>
-                    <span className="inline-flex items-center rounded-full bg-[#063e66] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white transition-transform duration-300 group-hover:scale-[1.03]">
+                    <span className="inline-flex items-center rounded-full bg-[#063e66] px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-white transition-transform duration-300 group-hover:scale-[1.03] max-[640px]:text-[0.68rem] max-[640px]:px-2.5">
                       {service.badge}
                     </span>
-                    <h2 className="m-0 mt-3 text-[#0d2745] text-[1.18rem] font-[780] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[#063e66]">{service.title}</h2>
+                    <h2 className="m-0 mt-3 text-[#0d2745] text-[1.18rem] font-[780] tracking-[-0.02em] transition-colors duration-300 group-hover:text-[#063e66] max-[640px]:mt-2 max-[640px]:text-[1.03rem]">
+                      {service.title}
+                    </h2>
                   </div>
-                  <div className="rounded-full bg-white px-4 py-2 text-[0.8rem] font-semibold text-[#063e66] shadow-[0_8px_20px_rgba(6,62,102,0.08)] transition-transform duration-300 group-hover:-translate-y-0.5">
+                  <div className="rounded-full bg-white px-4 py-2 text-[0.8rem] font-semibold text-[#063e66] shadow-[0_8px_20px_rgba(6,62,102,0.08)] transition-transform duration-300 group-hover:-translate-y-0.5 max-[640px]:px-3 max-[640px]:py-1.5 max-[640px]:text-[0.72rem]">
                     4 Categories
                   </div>
                 </div>
-                <p className="m-0 mt-3 max-w-[70ch] text-[#475a70] text-[0.93rem] leading-[1.6]">{service.note}</p>
+                <p className="m-0 mt-3 max-w-[70ch] text-[#475a70] text-[0.93rem] leading-[1.6] max-[640px]:mt-2 max-[640px]:text-[0.86rem] max-[640px]:leading-[1.55]">
+                  {service.note}
+                </p>
               </div>
 
-              <div className="px-[1rem] py-[1rem] max-[640px]:px-[0.75rem]">
-                <table className="w-full table-fixed border-collapse">
+              <div className="px-[1rem] py-[1rem] max-[640px]:px-4 max-[640px]:py-4">
+                <table className="w-full table-fixed border-collapse max-[640px]:hidden">
                   <thead>
                     <tr className="bg-[#063e66] text-white">
                       <th className="w-[18%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Category</th>
@@ -111,22 +117,37 @@ export default function CarDetailingPage() {
                     ))}
                   </tbody>
                 </table>
+
+                <div className="grid gap-3 sm:hidden">
+                  {service.rows.map((row) => (
+                    <div key={`${service.title}-${row.category}-mobile`} className="rounded-[14px] border border-[rgba(10,58,104,0.08)] bg-[#f8fbfe] px-4 py-3 shadow-[0_8px_20px_rgba(8,20,40,0.04)]">
+                      <div className="flex items-start justify-between gap-3">
+                        <strong className="text-[#0d2745] text-[0.95rem] font-semibold">{row.category}</strong>
+                        <span className="text-[#063e66] text-[0.75rem] font-semibold uppercase tracking-[0.12em]">PKR {row.pkr}</span>
+                      </div>
+                      <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.84rem] text-[#475a70]">
+                        <span>GBP {row.gbp}</span>
+                        <span className="text-[#8a97a8]">{row.remarks}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </article>
           ))}
         </div>
 
-        <div className="mt-8 mx-auto max-w-[1180px] rounded-[18px] border border-[rgba(10,58,104,0.08)] bg-[#fff8eb] px-[1.5rem] py-[1.15rem] shadow-[0_12px_28px_rgba(8,20,40,0.05)]">
-          <p className="m-0 text-[0.94rem] leading-[1.7] text-[#5b4a2a] font-medium">
+        <div className="mt-8 mx-auto max-w-[1180px] rounded-[18px] border border-[rgba(10,58,104,0.08)] bg-[#fff8eb] px-[1.5rem] py-[1.15rem] shadow-[0_12px_28px_rgba(8,20,40,0.05)] max-[640px]:px-4 max-[640px]:py-4 max-[640px]:mt-6">
+          <p className="m-0 text-[0.94rem] leading-[1.7] text-[#5b4a2a] font-medium max-[640px]:text-[0.86rem] max-[640px]:leading-[1.6]">
             Charges for other services including new parts and repairing of damaged vehicles may vary depending on market rates.
           </p>
         </div>
 
-        <div className="mt-12 mx-auto max-w-[1180px] grid gap-4 rounded-[18px] border border-[rgba(10,58,104,0.08)] bg-[#f7fbfe] px-[1.5rem] py-[1.4rem] shadow-[0_12px_28px_rgba(8,20,40,0.06)]">
+        <div className="mt-12 mx-auto max-w-[1180px] grid gap-4 rounded-[18px] border border-[rgba(10,58,104,0.08)] bg-[#f7fbfe] px-[1.5rem] py-[1.4rem] shadow-[0_12px_28px_rgba(8,20,40,0.06)] max-[640px]:px-4 max-[640px]:py-4 max-[640px]:mt-8">
           <div className="flex items-start justify-between gap-4 max-[640px]:flex-col">
             <div>
               <strong className="block text-[1rem] text-[#0d2745]">Need a quick booking?</strong>
-              <p className="m-0 mt-1 text-[0.92rem] text-[#5d6b7d]">Use the booking page to select the package and confirm your service details.</p>
+              <p className="m-0 mt-1 text-[0.92rem] text-[#5d6b7d] max-[640px]:text-[0.86rem] max-[640px]:leading-[1.6]">Use the booking page to select the package and confirm your service details.</p>
             </div>
             <Link
               href="/car-detailing/book"
@@ -140,5 +161,3 @@ export default function CarDetailingPage() {
     </div>
   );
 }
-
-
