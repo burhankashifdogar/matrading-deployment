@@ -5,6 +5,7 @@ import { CarGallery } from '@/components/car-gallery';
 import { CarCard } from '@/components/car-card';
 import { SectionHeading } from '@/components/section-heading';
 import { availableStock, brand, featuredCars } from '@/data/site';
+import type { StockVehicle } from '@/types/site';
 import { formatPhoneForWhatsApp } from '@/lib/utils';
 
 type CarDetailPageProps = {
@@ -16,11 +17,13 @@ type DetailItem = {
   title: string;
   images: string[];
   price: string;
-  year: number;
+  year: number | string;
   transmission: string;
   fuelType: string;
   mileage: string;
   description: string;
+  summary?: Array<{ label: string; value: string }>;
+  highlights?: string[];
   specs: Array<{ label: string; value: string }>;
   relatedTitle: string;
   type: 'featured' | 'stock';
@@ -28,6 +31,11 @@ type DetailItem = {
 
 const defaultStockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
 const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(value);
+const getStockModelLabel = (item: StockVehicle) => item.modelLabel ?? (item.model ? `${item.model}` : 'Model N/A');
+const getStockPricePkrText = (item: StockVehicle) => item.pricePkrLabel ?? `PKR ${formatNumber(item.demandPkr)}`;
+const getStockPriceGbpText = (item: StockVehicle) => item.pricePoundLabel ?? `GBP ${formatNumber(item.demandPound)}`;
+const getStockMileageText = (item: StockVehicle) => item.mileageLabel ?? `${formatNumber(item.mileageKm)} km`;
+const getStockCityLabel = (item: StockVehicle) => item.registrationCityLabel ?? item.registrationCity;
 
 function getDetailItem(slug: string): DetailItem | null {
   const featured = featuredCars.find((item) => item.slug === slug);
@@ -61,18 +69,20 @@ function getDetailItem(slug: string): DetailItem | null {
       slug: stock.slug,
       title: stock.make,
       images: stock.images ?? defaultStockImages,
-      price: `PKR ${formatNumber(stock.demandPkr)} | GBP ${formatNumber(stock.demandPound)}`,
-      year: stock.model,
+      price: stock.pricePoundLabel && !/N\/A/i.test(stock.pricePoundLabel) ? `${getStockPricePkrText(stock)} | ${getStockPriceGbpText(stock)}` : getStockPricePkrText(stock),
+      year: getStockModelLabel(stock),
       transmission: 'N/A',
       fuelType: 'N/A',
-      mileage: `${formatNumber(stock.mileageKm)} km`,
-      description: 'This vehicle is part of our available inventory and is presented with the key details you need to review quickly.',
+      mileage: getStockMileageText(stock),
+      description: stock.description ?? 'This vehicle is part of our available inventory and is presented with the key details you need to review quickly.',
+      summary: stock.summary ?? undefined,
+      highlights: stock.highlights ?? [],
       specs: [
         { label: 'Make', value: stock.make },
-        { label: 'Model', value: String(stock.model) },
+        { label: 'Model', value: getStockModelLabel(stock) },
         { label: 'Variant', value: stock.variant },
         { label: 'Colour', value: stock.colour },
-        { label: 'Registration City', value: stock.registrationCity },
+        { label: 'Registration City', value: getStockCityLabel(stock) },
         { label: 'Mileage', value: `${formatNumber(stock.mileageKm)} km` },
         { label: 'Demand PKR', value: `PKR ${formatNumber(stock.demandPkr)}` },
         { label: 'Demand GBP', value: `GBP ${formatNumber(stock.demandPound)}` }
@@ -108,6 +118,16 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
     : featuredCars;
 
   const relatedCarsForDisplay = relatedFeaturedCars.slice(0, 4);
+  const sidebarSummary = detail.type === 'stock' ? detail.summary ?? [] : [];
+  const sidebarSpecs = sidebarSummary.length > 0 ? [] : detail.specs;
+  const stockHighlights = detail.type === 'stock' ? detail.highlights ?? [] : [];
+  const detailCards = detail.type === 'stock'
+    ? stockHighlights.length > 0
+      ? stockHighlights
+      : sidebarSummary.length > 0
+        ? sidebarSummary.map(({ label, value }) => `${label}: ${value}`)
+        : sidebarSpecs.map(({ label, value }) => `${label}: ${value}`)
+    : [];
 
   return (
     <div className="grid gap-4 bg-[#f5f8fe] pt-[1.6rem]">
@@ -128,7 +148,9 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
         <aside className="grid gap-7 rounded-[8px] bg-white shadow-detail min-h-[590px] p-8 max-[1080px]:p-[1.65rem] max-[1080px]:min-h-auto">
           <div className="grid gap-3 pb-5 border-b border-[rgba(10,58,104,0.07)]">
             <h1 className="m-0 text-[#063e66] text-[clamp(1.95rem,2.5vw,2.55rem)] leading-[1.05] tracking-[-0.04em] font-[650]">{detail.title}</h1>
-            <p className="m-0 text-[#283d55] text-base font-normal">{detail.year} Model</p>
+            {detail.type === 'featured' ? (
+              <p className="m-0 text-[#283d55] text-base font-normal">{`${detail.year} Model`}</p>
+            ) : null}
             <div className="flex flex-wrap gap-[0.65rem] mt-[0.3rem]">
               <span className="rounded-full bg-[#e7f1ff] text-[#063e66] px-3 py-[0.4rem] text-[0.66rem] font-extrabold tracking-[0.08em] uppercase">Verified</span>
               <span className="rounded-full bg-[#f1f2f4] text-[#687282] px-3 py-[0.4rem] text-[0.66rem] font-extrabold tracking-[0.08em] uppercase">New Arrival</span>
@@ -141,8 +163,19 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
             <p className="m-0 text-[#263c54] text-[0.95rem]">Inclusive of all local taxes</p>
           </div>
 
+          {sidebarSummary.length > 0 ? (
+            <div className="grid grid-cols-2 gap-[0.85rem] max-[720px]:grid-cols-1">
+              {sidebarSummary.map(({ label, value }) => (
+                <div key={label} className="rounded-[10px] bg-[#f7f9fd] px-4 py-3">
+                  <span className="block text-[#344b63] text-[0.68rem] font-bold tracking-[0.12em] uppercase mb-1">{label}</span>
+                  <strong className="block text-[#001f3f] text-base font-[650]">{value}</strong>
+                </div>
+              ))}
+            </div>
+          ) : null}
+
           <div className="grid grid-cols-2 gap-[1.45rem_2rem] max-[720px]:grid-cols-1">
-            {detail.specs.map(({ label, value }) => (
+            {sidebarSpecs.map(({ label, value }) => (
               <div key={label} className="grid gap-[0.28rem]">
                 <span className="text-[#344b63] text-[0.68rem] font-bold tracking-[0.12em] uppercase">{label}</span>
                 <strong className="text-[#001f3f] text-base font-[650] block mt-[0.25rem]">{value}</strong>
@@ -178,16 +211,16 @@ export default async function CarDetailPage({ params }: CarDetailPageProps) {
 
           <div className="px-[1.9rem] py-[1.75rem] max-[720px]:px-[1.35rem]">
             <h3 className="m-0 mb-[1.05rem] text-[#0d2745] text-base font-bold">Details</h3>
-            <div className="grid grid-cols-3 gap-[1.25rem_1.6rem] max-[720px]:grid-cols-1">
-              {detail.specs.map(({ label, value }) => (
-                <div key={`${label}-${value}`} className="detail-feature-item flex items-center gap-[0.7rem] text-[#243852] text-[0.92rem] font-semibold">
-                  <span className="relative w-6 h-6 flex-none rounded-full bg-[#eef4ff]" aria-hidden="true" />
-                  <span>
-                    {label}: {value}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {detailCards.length > 0 ? (
+              <div className="grid grid-cols-2 gap-[0.85rem] max-[720px]:grid-cols-1">
+                {detailCards.map((item) => (
+                  <div key={item} className="flex items-start gap-[0.7rem] rounded-[10px] bg-[#f7f9fd] px-4 py-3 text-[#243852] text-[0.92rem] font-semibold">
+                    <span className="relative top-[0.45rem] w-2.5 h-2.5 rounded-full bg-[#063e66] flex-none" aria-hidden="true" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
