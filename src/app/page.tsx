@@ -28,7 +28,7 @@ const promos = [
     eyebrow: 'Car Detailing',
     title: 'Make Your Car Shine',
     description: 'Professional detailing services that restore your vehicle to showroom condition.',
-    points: ['Ceramic coating', 'Paint correction', 'Interior steam clean'],
+    points: ['Cleaning', 'Document Inspection'],
     cta: 'View Services',
     href: '/car-detailing',
     image: '/img2.jpg',
