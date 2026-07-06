@@ -4,11 +4,17 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 
 import { availableStock } from '@/data/site';
+import type { StockVehicle } from '@/types/site';
 
 const CARS_PER_PAGE = 4;
 const defaultStockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
 const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(value);
 const uniqueSorted = (values: string[]) => Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
+const getStockModelLabel = (item: StockVehicle) => item.modelLabel ?? (item.model ? `${item.model}` : 'Model N/A');
+const getStockPricePkrText = (item: StockVehicle) => item.pricePkrLabel ?? `PKR ${formatNumber(item.demandPkr)}`;
+const getStockPriceGbpText = (item: StockVehicle) => item.pricePoundLabel ?? `GBP ${formatNumber(item.demandPound)}`;
+const getStockMileageText = (item: StockVehicle) => item.mileageLabel ?? `${formatNumber(item.mileageKm)} km`;
+const getStockCityLabel = (item: StockVehicle) => item.registrationCityLabel ?? item.registrationCity;
 
 type FilterListProps = {
   title: string;
@@ -53,7 +59,7 @@ export default function CarSalesPage() {
   );
 
   const modelOptions = useMemo(
-    () => uniqueSorted(availableStock.map((item) => String(item.model))).map((label) => ({ label, count: availableStock.filter((item) => String(item.model) === label).length })),
+    () => uniqueSorted(availableStock.map((item) => getStockModelLabel(item))).map((label) => ({ label, count: availableStock.filter((item) => getStockModelLabel(item) === label).length })),
     []
   );
 
@@ -69,15 +75,15 @@ export default function CarSalesPage() {
 
   const filteredStock = useMemo(() => {
     return availableStock.filter((item) => {
-      const matchesSearch = [item.make, item.variant, item.colour, item.registrationCity, String(item.model)]
+      const matchesSearch = [item.make, item.variant, item.colour, getStockModelLabel(item), getStockCityLabel(item)]
         .join(' ')
         .toLowerCase()
         .includes(searchQuery.toLowerCase());
 
       if (selectedMakes.length > 0 && !selectedMakes.includes(item.make)) return false;
-      if (selectedModels.length > 0 && !selectedModels.includes(String(item.model))) return false;
+      if (selectedModels.length > 0 && !selectedModels.includes(getStockModelLabel(item))) return false;
       if (selectedColours.length > 0 && !selectedColours.includes(item.colour)) return false;
-      if (selectedCities.length > 0 && !selectedCities.includes(item.registrationCity)) return false;
+      if (selectedCities.length > 0 && !selectedCities.includes(getStockCityLabel(item))) return false;
       if (item.demandPkr < minPrice || item.demandPkr > maxPrice) return false;
 
       return matchesSearch;
@@ -234,15 +240,15 @@ export default function CarSalesPage() {
                     <div className="flex flex-col justify-between gap-3 flex-1 grid grid-cols-[minmax(0,1fr)_auto] py-[1.45rem] px-[1.55rem] pb-[1.15rem] grid-rows-[auto_auto_auto_1fr] col-gap-6 row-gap-[0.55rem] min-h-[176px] content-center max-[980px]:grid-cols-1 max-[980px]:p-5 max-[720px]:py-4 max-[720px]:px-4 max-[420px]:p-4">
                       <h3 className="m-0 text-[#043b66] text-[1.08rem] font-extrabold tracking-[-0.01em] col-start-1 max-[420px]:text-[1rem]">{item.make}</h3>
                       <div className="flex flex-wrap gap-[0.45rem] text-[#00819a] text-[0.85rem] font-bold col-start-1 max-[420px]:gap-2 max-[420px]:text-[0.8rem]">
-                        <span>{item.model}</span>
+                        <span>{getStockModelLabel(item)}</span>
                         <span className="before:content-['|'] before:text-[#00819a] before:ml-[0.45rem]">{item.variant}</span>
                         <span className="before:content-['|'] before:text-[#00819a] before:ml-[0.45rem]">{item.colour}</span>
                       </div>
-                      <div className="mt-[0.3rem] text-[#043b66] text-[1.32rem] font-extrabold col-start-1 max-[420px]:text-[1.08rem]">PKR {formatNumber(item.demandPkr)}</div>
+                      <div className="mt-[0.3rem] text-[#043b66] text-[1.32rem] font-extrabold col-start-1 max-[420px]:text-[1.08rem]">{getStockPricePkrText(item)}</div>
                       <div className="flex flex-wrap gap-[1.15rem] mt-[0.1rem] text-[#455a70] text-[0.82rem] col-start-1 max-[420px]:gap-2 max-[420px]:text-[0.76rem]">
-                        <span className="relative pl-4">{formatNumber(item.mileageKm)} km</span>
-                        <span className="relative pl-4">{item.registrationCity}</span>
-                        <span className="relative pl-4">GBP {formatNumber(item.demandPound)}</span>
+                        <span className="relative pl-4">{getStockMileageText(item)}</span>
+                        <span className="relative pl-4">{getStockCityLabel(item)}</span>
+                        <span className="relative pl-4">{getStockPriceGbpText(item)}</span>
                       </div>
                       <div className="row-span-4 flex items-center col-start-2 col-end-3 max-[980px]:col-start-1 max-[980px]:col-end-1 max-[980px]:row-span-1 max-[980px]:mt-[0.4rem] max-[720px]:justify-start max-[420px]:w-full">
                         <a href={`/car-sales/${item.slug}`} className="inline-flex min-w-[160px] justify-center items-center rounded-[2px] bg-[#063e66] text-white py-[0.78rem] px-[1.35rem] font-bold text-sm transition hover:bg-[#005f86] hover:-translate-y-px no-underline max-[420px]:w-full">

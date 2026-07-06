@@ -144,8 +144,66 @@ export const availableStock: StockVehicle[] = [
     demandPkr: 2950000,
     demandPound: 7743,
     images: [
-      '/inventory/Honda%20city%20altas.jpg',
-      '/inventory/Honda%20city%20altas%20interior.jpeg'
+      '/inventory/Honda%20city%20altas.jpeg',
+      '/inventory/Honda%20city%20altas2.jpeg',
+      '/inventory/Honda%20city%20altas3.jpeg',
+      '/inventory/Honda%20city%20altas4.jpeg',
+      '/inventory/Honda%20city%20altas5.jpeg',
+      '/inventory/Honda%20city%20altas6.jpeg'
+    ]  },
+  {
+    slug: 'honda-vezel-hybrid-black-lahore',
+    make: 'Honda Vezel Z Sensing',
+    model: 2016,
+    modelLabel: '2016',
+    variant: 'Hybrid',
+    colour: 'Black',
+    registrationCity: 'Islamabad',
+    registrationCityLabel: 'Islamabad',
+    mileageKm: 0,
+    mileageLabel: 'Mileage N/A',
+    demandPkr: 5700000,
+    demandPound: 23000,
+    pricePkrLabel: 'PKR 57 Lac',
+    pricePoundLabel: 'GBP 23,000',
+    importYear: 2022,
+    summary: [
+      { label: 'Type', value: 'Honda Vezel Z Sensing' },
+      { label: 'Colour', value: 'Black (Interior & Exterior)' },
+      { label: 'Registration', value: 'Islamabad' },
+      { label: 'Model', value: '2016' },
+      { label: 'Import', value: '2022' },
+      { label: 'Owner', value: 'First owner' }
+    ],
+    description: 'Honda Vezel Z Sensing in black with black interior and exterior, registered in Islamabad and imported in 2022.',
+    highlights: [
+      'First owner, driven single handed',
+      'Brand new GT tyres',
+      'Paddle shifter',
+      'Adaptive cruise control',
+      'Automatic mirrors, wipers and lights',
+      'Heated seats for both occupants',
+      'Genuine Modulo kit in silver',
+      'Lane assist',
+      'Brake hold',
+      'A-one room condition',
+      'ABS brakes',
+      'Eco, Normal and Sport modes',
+      'Fuel average 20-22',
+      'Hybrid battery condition 100%'
+    ],
+    images: [
+      '/inventory/Honda%20vezel.jpeg',
+      '/inventory/Honda%20vezel2.jpeg',
+      '/inventory/Honda%20vezel3.jpeg',
+      '/inventory/Honda%20vezel4.jpeg',
+      '/inventory/Honda%20vezel5.jpeg',
+      '/inventory/Honda%20vezel6.jpeg',
+      '/inventory/Honda%20vezel7.jpeg',
+      '/inventory/Honda%20vezel8.jpeg',
+      '/inventory/Honda%20vezel9.jpeg',
+      '/inventory/Honda%20vezel10.jpeg',
+      '/inventory/Honda%20vezel11.jpeg'
     ]
   },
     {
@@ -241,11 +299,58 @@ export const availableStock: StockVehicle[] = [
     demandPkr: 2650000,
     demandPound: 6955,
     images: [
-      '/inventory/suzuki%20alto%202022.jpeg',
-      '/inventory/suzuki%20alto%202022%202.jpeg'
+      '/inventory/suzuki.JPG',
+      '/inventory/suzuki2.JPG',
+      '/inventory/suzuki3.jpeg',
+      '/inventory/suzuki4.jpeg',
+      '/inventory/suzuki5.jpeg',
+      '/inventory/suzuki6.jpeg',
+      '/inventory/suzuki7.jpeg',
+      '/inventory/suzuki8.JPG',
+      '/inventory/suzuki9.jpeg'
     ]
   },
-    {
+  
+  {
+    slug: 'honda-civic-2015-vti-prosmatec-silver-islamabad',
+    make: 'Honda Civic VTi Prosmatec',
+    model: 2015,
+    modelLabel: '2015',
+    variant: '1.8 i-VTEC',
+    colour: 'Silver',
+    registrationCity: 'Islamabad',
+    registrationCityLabel: 'Islamabad',
+    mileageKm: 211000,
+    demandPkr: 3500000,
+    demandPound: 0,
+    pricePkrLabel: 'PKR 35 Lac',
+    pricePoundLabel: 'GBP N/A',
+    summary: [
+      { label: 'Type', value: 'Honda Civic VTi Prosmatec 1.8 i-VTEC' },
+      { label: 'Colour', value: 'Silver' },
+      { label: 'Registration', value: 'Islamabad' },
+      { label: 'Model', value: '2015' },
+      { label: 'Mileage', value: '211,000 KM' },
+      { label: 'Owner', value: 'First owner' }
+    ],
+    description: 'Honda Civic VTi Prosmatec 1.8 i-VTEC in silver, Islamabad registered, first owner, and driven 211,000 km.',
+    highlights: [
+      'First owner',
+      'Isb registered',
+      '211,000 KM driven',
+      '1.8 i-VTEC engine',
+      'Prosmatec transmission',
+      'Demand 35 lacs'
+    ],
+    images: [
+      '/inventory/Honda%20civic%20silver.jpeg',
+      '/inventory/Honda%20civic%20silver2.jpeg',
+      '/inventory/Honda%20civic%20silver3.jpeg',
+      '/inventory/Honda%20civic%20silver4.jpeg',
+      '/inventory/Honda%20civic%20silver5.jpeg'
+    ]
+  },
+  {
     slug: 'honda-civic-2019-oriel-black-islamabad',
     make: 'Honda Civic',
     model: 2019,
