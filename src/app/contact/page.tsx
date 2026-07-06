@@ -5,11 +5,6 @@ const contactItems = [
     title: 'Phone',
     lines: [brand.phone, 'Concierge line available 24/7'],
     icon: 'phone'
-  },
-  {
-    title: 'Email',
-    lines: [brand.email, 'Typical response time: 2 hours'],
-    icon: 'email'
   }
 ];
 
@@ -128,11 +123,6 @@ export default function ContactPage() {
                       {item.lines[0]}
                     </a>
                   )}
-                  {item.title === 'Email' && (
-                    <a href={`mailto:${brand.email}`} className="block text-[#0d2d52] font-bold text-[0.9rem] leading-[1.45]">
-                      {item.lines[0]}
-                    </a>
-                  )}
                   <span className="block text-[#6b7d93] text-[0.9rem] leading-[1.45]">
                     {item.lines[1]}
                   </span>
@@ -141,6 +131,7 @@ export default function ContactPage() {
             ))}
           </div>
 
+    
         </div>
 
         {/* Right: Form Panel */}
@@ -205,6 +196,7 @@ export default function ContactPage() {
                     <option>Car Sales</option>
                     <option>Car Detailing</option>
                     <option>Book Appointment</option>
+                    <option>Car Inspection</option>
                   </select>
                 </div>
               </div>

@@ -1,8 +1,8 @@
 import { brand } from '@/data/site';
-import { formatPhoneForWhatsApp } from '@/lib/utils';
+import { formatWhatsAppMessageLink } from '@/lib/utils';
 
 const message = 'Hi, I would like to enquire about your services.';
-const whatsappHref = `${formatPhoneForWhatsApp(brand.whatsapp)}?text=${encodeURIComponent(message)}`;
+const whatsappHref = formatWhatsAppMessageLink(brand.whatsapp, message);
 
 export function WhatsAppFloat() {
   return (
@@ -27,7 +27,6 @@ export function WhatsAppFloat() {
           />
         </svg>
       </span>
-     
     </a>
   );
 }
