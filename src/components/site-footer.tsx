@@ -1,4 +1,4 @@
-﻿import Image from 'next/image';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { brand, navigation } from '@/data/site';
@@ -17,7 +17,6 @@ export function SiteFooter() {
                 <span className="text-muted text-[0.85rem]">Your trusted partner for premium cars and detailing services.</span>
               </div>
             </div>
-            <small className="text-muted">{brand.address}</small>
           </div>
 
           <div>
@@ -54,6 +53,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
-
-

@@ -3,7 +3,7 @@ import { brand } from '@/data/site';
 const contactItems = [
   {
     title: 'Phone',
-    lines: [brand.phone, 'Concierge line available 24/7'],
+    lines: [brand.phone],
     icon: 'phone'
   }
 ];
