@@ -12,7 +12,6 @@ const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(va
 const uniqueSorted = (values: string[]) => Array.from(new Set(values)).sort((a, b) => a.localeCompare(b));
 const getStockModelLabel = (item: StockVehicle) => item.modelLabel ?? (item.model ? `${item.model}` : 'Model N/A');
 const getStockPricePkrText = (item: StockVehicle) => item.pricePkrLabel ?? `PKR ${formatNumber(item.demandPkr)}`;
-const getStockPriceGbpText = (item: StockVehicle) => item.pricePoundLabel ?? `GBP ${formatNumber(item.demandPound)}`;
 const getStockMileageText = (item: StockVehicle) => item.mileageLabel ?? `${formatNumber(item.mileageKm)} km`;
 const getStockCityLabel = (item: StockVehicle) => item.registrationCityLabel ?? item.registrationCity;
 
@@ -248,7 +247,6 @@ export default function CarSalesPage() {
                       <div className="flex flex-wrap gap-[1.15rem] mt-[0.1rem] text-[#455a70] text-[0.82rem] col-start-1 max-[420px]:gap-2 max-[420px]:text-[0.76rem]">
                         <span className="relative pl-4">{getStockMileageText(item)}</span>
                         <span className="relative pl-4">{getStockCityLabel(item)}</span>
-                        <span className="relative pl-4">{getStockPriceGbpText(item)}</span>
                       </div>
                       <div className="row-span-4 flex items-center col-start-2 col-end-3 max-[980px]:col-start-1 max-[980px]:col-end-1 max-[980px]:row-span-1 max-[980px]:mt-[0.4rem] max-[720px]:justify-start max-[420px]:w-full">
                         <a href={`/car-sales/${item.slug}`} className="inline-flex min-w-[160px] justify-center items-center rounded-[2px] bg-[#063e66] text-white py-[0.78rem] px-[1.35rem] font-bold text-sm transition hover:bg-[#005f86] hover:-translate-y-px no-underline max-[420px]:w-full">

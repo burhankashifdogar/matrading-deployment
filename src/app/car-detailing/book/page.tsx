@@ -5,7 +5,6 @@ import { useMemo, useState } from 'react';
 type BookingRow = {
   category: string;
   pkr: string;
-  gbp: string;
   remarks: string;
 };
 
@@ -20,20 +19,20 @@ const bookingServices: BookingService[] = [
     title: 'Detailings (Cleaning)',
     helper: 'Professional cleaning based on your vehicle category.',
     rows: [
-      { category: 'Sedans', pkr: '6000-8000', gbp: '16-21', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Cross Overs', pkr: '8000-12000', gbp: '21-31', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'SUVs', pkr: '14000-18000', gbp: '37-47', remarks: 'Free service for vehicles purchased by MA Trading' }
+      { category: 'Sedans', pkr: '6000-8000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '8000-12000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '14000-18000', remarks: 'Free service for vehicles purchased by MA Trading' }
     ]
   },
   {
     title: 'Documents Inspection',
     helper: 'Document inspection pricing for the same category types.',
     rows: [
-      { category: 'Sedans', pkr: '8000-10000', gbp: '21-27', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Cross Overs', pkr: '10000-15000', gbp: '27-40', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'SUVs', pkr: '15000-20000', gbp: '40-53', remarks: 'Free service for vehicles purchased by MA Trading' }
+      { category: 'Sedans', pkr: '8000-10000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '10000-15000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '15000-20000', remarks: 'Free service for vehicles purchased by MA Trading' }
     ]
   }
 ];
@@ -154,10 +153,6 @@ export default function DetailingBookingPage() {
                     <div className="flex items-center justify-between gap-4">
                       <span className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-[#5d6b7d]">Estimated Price</span>
                       <strong className="text-[#063e66] text-[0.98rem]">PKR {selectedCategoryData.pkr}</strong>
-                    </div>
-                    <div className="flex items-center justify-between gap-4">
-                      <span className="text-[0.82rem] font-semibold uppercase tracking-[0.12em] text-[#5d6b7d]">GBP Range</span>
-                      <strong className="text-[#063e66] text-[0.98rem]">£{selectedCategoryData.gbp}</strong>
                     </div>
                     <p className="m-0 text-[0.8rem] text-[#5d6b7d] leading-[1.55]">{selectedCategoryData.remarks}</p>
                   </div>

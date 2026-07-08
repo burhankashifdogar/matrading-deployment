@@ -33,7 +33,6 @@ const defaultStockImages = ['/img1.jpg', '/car1.jpg', '/car2.jpg', '/car3.jpg'];
 const formatNumber = (value: number) => new Intl.NumberFormat('en-PK').format(value);
 const getStockModelLabel = (item: StockVehicle) => item.modelLabel ?? (item.model ? `${item.model}` : 'Model N/A');
 const getStockPricePkrText = (item: StockVehicle) => item.pricePkrLabel ?? `PKR ${formatNumber(item.demandPkr)}`;
-const getStockPriceGbpText = (item: StockVehicle) => item.pricePoundLabel ?? `GBP ${formatNumber(item.demandPound)}`;
 const getStockMileageText = (item: StockVehicle) => item.mileageLabel ?? `${formatNumber(item.mileageKm)} km`;
 const getStockCityLabel = (item: StockVehicle) => item.registrationCityLabel ?? item.registrationCity;
 
@@ -69,7 +68,7 @@ function getDetailItem(slug: string): DetailItem | null {
       slug: stock.slug,
       title: stock.make,
       images: stock.images ?? defaultStockImages,
-      price: stock.pricePoundLabel && !/N\/A/i.test(stock.pricePoundLabel) ? `${getStockPricePkrText(stock)} | ${getStockPriceGbpText(stock)}` : getStockPricePkrText(stock),
+      price: getStockPricePkrText(stock),
       year: getStockModelLabel(stock),
       transmission: 'N/A',
       fuelType: 'N/A',
@@ -84,8 +83,7 @@ function getDetailItem(slug: string): DetailItem | null {
         { label: 'Colour', value: stock.colour },
         { label: 'Registration City', value: getStockCityLabel(stock) },
         { label: 'Mileage', value: `${formatNumber(stock.mileageKm)} km` },
-        { label: 'Demand PKR', value: `PKR ${formatNumber(stock.demandPkr)}` },
-        { label: 'Demand GBP', value: `GBP ${formatNumber(stock.demandPound)}` }
+        { label: 'Demand PKR', value: `PKR ${formatNumber(stock.demandPkr)}` }
       ],
       relatedTitle: stock.make,
       type: 'stock'

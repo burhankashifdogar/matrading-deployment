@@ -3,8 +3,8 @@ import type { BlogPost, Car, NavItem, Service, StockVehicle } from '@/types/site
 export const brand = {
   name: 'M.A Trading',
   domain: 'matrading.pk',
-  phone: '+92 333 3113195',
-  whatsapp: '+923333113195',
+  phone: '0305 2446683',
+  whatsapp: '+923052446683',
   email: 'info@matrading.pk',
   address: '123 Main Boulevard, Lahore, Pakistan'
 };
@@ -106,7 +106,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 111578,
     demandPkr: 3250000,
-    demandPound: 8530,
     images: [
       '/inventory/Toyota%20Corolla-%20White%202015%20front.jpeg',
       '/inventory/Toyota%20Corolla-%20White%202015%202.jpeg',
@@ -122,7 +121,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 158767,
     demandPkr: 2700000,
-    demandPound: 7087,
     images: [
       '/inventory/Toyota%20Corolla-black%20front.JPG',
       '/inventory/Toyota%20Corolla-black%202.jpeg',
@@ -142,7 +140,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 101870,
     demandPkr: 2950000,
-    demandPound: 7743,
     images: [
       '/inventory/Honda%20city%20altas.jpeg',
       '/inventory/Honda%20city%20altas2.jpeg',
@@ -163,9 +160,7 @@ export const availableStock: StockVehicle[] = [
     mileageKm: 0,
     mileageLabel: 'Mileage N/A',
     demandPkr: 5700000,
-    demandPound: 23000,
     pricePkrLabel: 'PKR 57 Lac',
-    pricePoundLabel: 'GBP 23,000',
     importYear: 2022,
     summary: [
       { label: 'Type', value: 'Honda Vezel Z Sensing' },
@@ -215,7 +210,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 29291,
     demandPkr: 3500000,
-    demandPound: 9186,
     images: [
       '/inventory/Toyota%20Corolla-%20White%202013%20Front.JPG',
       '/inventory/Toyota%20Corolla-%20White%202013%203.jpeg',
@@ -232,7 +226,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 55759,
     demandPkr: 4275000,
-    demandPound: 11220,
     images: [
       '/inventory/Toyota%20corolla%202019%20Front.jpg',
       '/inventory/Toyota%20corolla%202019%202.jpg'
@@ -247,7 +240,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 134788,
     demandPkr: 2850000,
-    demandPound: 7480,
     images: [
       '/inventory/Toyota%20Corolla%20silver%20front.JPG',
       '/inventory/Toyota%20Corolla%20silver%202.jpeg',
@@ -267,7 +259,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 47898,
     demandPkr: 4250000,
-    demandPound: 11155,
     images: [
       '/inventory/Honda%20city%202022%20front.jpeg',
       '/inventory/Honda%20city%202022%202.jpeg'
@@ -282,7 +273,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 100100,
     demandPkr: 13500000,
-    demandPound: 35433,
     images: [
       '/inventory/Toyota%20fortuner%202.7%20front.jpeg',
       '/inventory/Toyota%20fortuner%202.7%20interior.jpeg'
@@ -297,7 +287,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Lahore',
     mileageKm: 100000,
     demandPkr: 2650000,
-    demandPound: 6955,
     images: [
       '/inventory/suzuki.JPG',
       '/inventory/suzuki2.JPG',
@@ -322,9 +311,7 @@ export const availableStock: StockVehicle[] = [
     registrationCityLabel: 'Islamabad',
     mileageKm: 211000,
     demandPkr: 3500000,
-    demandPound: 0,
     pricePkrLabel: 'PKR 35 Lac',
-    pricePoundLabel: 'GBP N/A',
     summary: [
       { label: 'Type', value: 'Honda Civic VTi Prosmatec 1.8 i-VTEC' },
       { label: 'Colour', value: 'Silver' },
@@ -359,7 +346,6 @@ export const availableStock: StockVehicle[] = [
     registrationCity: 'Islamabad',
     mileageKm: 61476,
     demandPkr: 5250000,
-    demandPound: 13780,
     images: [
       '/inventory/honda%20civic%20oriel.jpeg',
       '/inventory/honda%20civic%20oriel%20interior.jpeg'

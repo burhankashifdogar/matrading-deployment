@@ -5,7 +5,6 @@ import Link from 'next/link';
 type PriceRow = {
   category: string;
   pkr: string;
-  gbp: string;
   remarks: string;
 };
 
@@ -22,10 +21,10 @@ const detailingServices: DetailingService[] = [
     badge: 'Cleaning',
     note: 'Category-wise pricing for professional cleaning. Free service applies to vehicles purchased by MA Trading.',
     rows: [
-      { category: 'Sedans', pkr: '6000-8000', gbp: '16-21', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Cross Overs', pkr: '8000-12000', gbp: '21-31', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'SUVs', pkr: '14000-18000', gbp: '37-47', remarks: 'Free service for vehicles purchased by MA Trading' }
+      { category: 'Sedans', pkr: '6000-8000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '8000-12000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '14000-18000', remarks: 'Free service for vehicles purchased by MA Trading' }
     ]
   },
   {
@@ -33,10 +32,10 @@ const detailingServices: DetailingService[] = [
     badge: 'Inspection',
     note: 'Inspection pricing follows the same category-based structure with the same free-service note for MA Trading purchases.',
     rows: [
-      { category: 'Sedans', pkr: '8000-10000', gbp: '21-27', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Hatchbacks', pkr: '4000-6000', gbp: '10-16', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'Cross Overs', pkr: '10000-15000', gbp: '27-40', remarks: 'Free service for vehicles purchased by MA Trading' },
-      { category: 'SUVs', pkr: '15000-20000', gbp: '40-53', remarks: 'Free service for vehicles purchased by MA Trading' }
+      { category: 'Sedans', pkr: '8000-10000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Hatchbacks', pkr: '4000-6000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'Cross Overs', pkr: '10000-15000', remarks: 'Free service for vehicles purchased by MA Trading' },
+      { category: 'SUVs', pkr: '15000-20000', remarks: 'Free service for vehicles purchased by MA Trading' }
     ]
   }
 ];
@@ -89,10 +88,9 @@ export default function CarDetailingPage() {
                 <table className="w-full table-fixed border-collapse max-[640px]:hidden">
                   <thead>
                     <tr className="bg-[#063e66] text-white">
-                      <th className="w-[18%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Category</th>
-                      <th className="w-[22%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price PKR</th>
-                      <th className="w-[16%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price £</th>
-                      <th className="w-[44%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Remarks</th>
+                      <th className="w-[22%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Category</th>
+                      <th className="w-[28%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Price PKR</th>
+                      <th className="w-[50%] text-left px-[0.95rem] py-[0.92rem] text-[0.84rem] font-semibold tracking-[0.04em] uppercase">Remarks</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -106,9 +104,6 @@ export default function CarDetailingPage() {
                         </td>
                         <td className="px-[0.95rem] py-[0.95rem] border-t border-[rgba(10,58,104,0.08)] text-[#475a70] align-top">
                           {row.pkr}
-                        </td>
-                        <td className="px-[0.95rem] py-[0.95rem] border-t border-[rgba(10,58,104,0.08)] text-[#475a70] align-top">
-                          {row.gbp}
                         </td>
                         <td className="px-[0.95rem] py-[0.95rem] border-t border-[rgba(10,58,104,0.08)] text-[#475a70] leading-[1.55] align-top break-words">
                           {row.remarks}
@@ -126,7 +121,6 @@ export default function CarDetailingPage() {
                         <span className="text-[#063e66] text-[0.75rem] font-semibold uppercase tracking-[0.12em]">PKR {row.pkr}</span>
                       </div>
                       <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-[0.84rem] text-[#475a70]">
-                        <span>GBP {row.gbp}</span>
                         <span className="text-[#8a97a8]">{row.remarks}</span>
                       </div>
                     </div>
