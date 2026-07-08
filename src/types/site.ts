@@ -27,12 +27,10 @@ export type StockVehicle = {
   registrationCity: string;
   mileageKm: number;
   demandPkr: number;
-  demandPound: number;
   images?: string[];
   modelLabel?: string;
   mileageLabel?: string;
   pricePkrLabel?: string;
-  pricePoundLabel?: string;
   registrationCityLabel?: string;
   importYear?: number;
   summary?: Array<{ label: string; value: string }>;
