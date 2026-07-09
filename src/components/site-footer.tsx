@@ -46,7 +46,7 @@ export function SiteFooter() {
         <div className="mt-5 pt-4 border-t border-[rgba(13,27,42,0.1)] grid grid-cols-[1fr_auto_1fr] items-center gap-3 max-[720px]:grid-cols-1 max-[720px]:text-center">
           <small className="text-muted">(c) 2026 {brand.name}. All rights reserved.</small>
           <small className="text-muted break-words">
-            Technology Partner: Codecoy Technologies (
+            Technology Partner: Codecoy Solutions (
             <a href="mailto:info@codecoysolutions.com" className="hover:text-brand">info@codecoysolutions.com</a>
             )
           </small>
